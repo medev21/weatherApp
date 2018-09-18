@@ -15,7 +15,10 @@ const config = {
 			{
 				test: /\.jsx?/,
 				exclude: /node_modules/,
-				use: 'babel-loader'
+				loader: 'babel-loader',
+				query: {
+	                presets: ['@babel/preset-env', '@babel/react']
+	            }
 			},
 			{
 				test: /\.(png|jpg|svg|gif|mp4|mov)$/,
@@ -28,7 +31,7 @@ const config = {
 			},
 			{
 				test: /\.scss$/,
-			loader: 'style-loader!css-loader!sass-loader'
+				loader: 'style-loader!css-loader!sass-loader'
 			}
 		]
 	},
