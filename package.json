@@ -4,7 +4,11 @@
   "description": "weather app using react",
   "main": "index.jsx",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "build": "webpack -p --progress --config webpack.config.js",
+    "dev-build": "webpack --progress -d --config webpack.config.js",
+    "watch": "webpack-dev-server --hot --progress --mode development"
   },
   "repository": {
     "type": "git",
@@ -22,5 +26,27 @@
   "bugs": {
     "url": "https://github.com/medev21/weatherApp/issues"
   },
-  "homepage": "https://github.com/medev21/weatherApp#readme"
+  "homepage": "https://github.com/medev21/weatherApp#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "copy-webpack-plugin": "^4.5.2",
+    "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
+  },
+  "@babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  }
 }
