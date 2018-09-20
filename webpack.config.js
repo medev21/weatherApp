@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const Dotenv = require('dotenv-webpack');
 
 const config = {
 	entry: __dirname + '/js/index.jsx',
@@ -46,7 +47,8 @@ const config = {
 	plugins: [
 		new CopyWebpackPlugin([
 			{ from: './index.html', to: './index.html' }
-		])
+		]),
+		new Dotenv()
 	]
 }
 
