@@ -46,7 +46,8 @@ const config = {
 	},
 	plugins: [
 		new CopyWebpackPlugin([
-			{ from: './index.html', to: './index.html' }
+			{ from: './index.html', to: './index.html' },
+			{ from: './public/city.list.json', to: './public/cities.json'}
 		]),
 		new Dotenv()
 	]
