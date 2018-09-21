@@ -5,18 +5,25 @@ class App extends Component {
 
 	constructor(props){
 		super(props);
-		// this.state = {}
+		this.state = {
+			cityOptions: []
+		}
 	}
 
 
 	componentDidMount(){
-		this.fetchCities()
+		this.fetchCities();
+		console.log(this.state.cityOptions);
 	}
 
 	//functions
 	fetchCities(){
 		fetch("../public/cities.json").then((res) => {
-			console.log(res)
+			return res.json();
+		}).then((json) => {
+			let values = json;
+			this.setState({cityOptions: values.cities})
+			console.log(values);
 		});
 	}
 	render(){
@@ -33,7 +40,14 @@ class App extends Component {
 
 
 		return (
-			<h1>hello world</h1>
+			<div>
+				<h1>hello world</h1>
+				<select>{
+					this.state.cityOptions.map((option, key) => 
+						<option key={key}>{option}</option>
+					)
+				}</select>
+			</div>
 		)
 	}
 }
