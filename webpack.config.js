@@ -18,7 +18,8 @@ const config = {
 				exclude: /node_modules/,
 				loader: 'babel-loader',
 				query: {
-	                presets: ['@babel/preset-env', '@babel/react']
+	                presets: ['@babel/preset-env', '@babel/react'],
+	                plugins: ["transform-class-properties"]
 	            }
 			},
 			{

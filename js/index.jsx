@@ -5,11 +5,4 @@ import App from "./App";
 import '../style/universal.scss';
 import '../style/app.scss';
 
-// ReactDOM.render(
-// 		<App />
-// 	,
-// 	document.getElementById("app")
-// );
-
-
 ReactDOM.render(<App />, document.getElementById("weatherapp"));
