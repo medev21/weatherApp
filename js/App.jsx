@@ -15,13 +15,9 @@ const getSuggestions = value => {
 	const inputValue = value.trim().toLowerCase();
 	const inputLength = inputValue.length;
 
-	console.log(cities[0].name);
-
 	return inputLength === 0 ? [] : cities.filter(city =>
 		
 		city.name.toLowerCase().slice(0, inputLength) === inputValue
-		// city.name.toLowerCase() === inputValue
-
 	);
 };
 
@@ -46,9 +42,9 @@ class App extends Component {
 	};
 
 
-	// componentDidMount(){
-	// 	// this.fetchCities();
-	// }
+	componentDidMount(){
+		this.fetchCityWeather();
+	}
 
 	onChange = (event, { newValue }) => {
 	    this.setState({
@@ -71,10 +67,6 @@ class App extends Component {
 		});
 	};
 
-	shouldRenderSuggestions = () => {
-
-	}
-
 	renderSuggestionsContainer = ({ containerProps, children, query }) => {
 		return (
 	    	<div {...containerProps}>
@@ -82,7 +74,21 @@ class App extends Component {
 	    		<h5>I like showing up.</h5>
 	    	</div>
 	    );
-	}
+	};
+
+	fetchCityWeather = () => {
+		Axios({
+			method: 'get',
+			url: 'http://api.openweathermap.org/data/2.5/forecast/daily?id=1270260&APPID=' + process.env.WEATHER_API
+			
+		})
+		.then(function(response){
+			console.log(response);
+		})
+		.catch(function(error){
+			console.log(error);
+		})
+	};
 
 
 	render() {
@@ -90,10 +96,12 @@ class App extends Component {
 
 	    // Autosuggest InputProps
 	    const inputProps = {
-	      placeholder: 'Type a programming language',
+	      placeholder: 'Type your city',
 	      value,
 	      onChange: this.onChange
 	    };
+
+
 
 	    // Finally, render it!
 	    return (
