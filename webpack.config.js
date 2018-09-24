@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const Dotenv = require('dotenv-webpack');
 
 const config = {
 	entry: __dirname + '/js/index.jsx',
@@ -15,7 +16,11 @@ const config = {
 			{
 				test: /\.jsx?/,
 				exclude: /node_modules/,
-				use: 'babel-loader'
+				loader: 'babel-loader',
+				query: {
+	                presets: ['@babel/preset-env', '@babel/react'],
+	                plugins: ["transform-class-properties"]
+	            }
 			},
 			{
 				test: /\.(png|jpg|svg|gif|mp4|mov)$/,
@@ -28,7 +33,7 @@ const config = {
 			},
 			{
 				test: /\.scss$/,
-			loader: 'style-loader!css-loader!sass-loader'
+				loader: 'style-loader!css-loader!sass-loader'
 			}
 		]
 	},
@@ -42,8 +47,10 @@ const config = {
 	},
 	plugins: [
 		new CopyWebpackPlugin([
-			{ from: './index.html', to: './index.html' }
-		])
+			{ from: './index.html', to: './index.html' },
+			{ from: './public/city.list.json', to: './public/cities.json'}
+		]),
+		new Dotenv()
 	]
 }
 
