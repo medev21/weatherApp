@@ -77,15 +77,20 @@ class App extends Component {
 	};
 
 	fetchCityWeather = () => {
-		Axios({
-			method: 'get',
-			url: 'http://api.openweathermap.org/data/2.5/forecast/daily?id=1270260&APPID=' + process.env.WEATHER_API
-			
+		// Axios({
+		// 	method: 'get',
+		// 	url: 'http://api.openweathermap.org/data/2.5/forecast/daily?id=1270260&APPID=' + process.env.WEATHER_API
+		// })
+		Axios.get('http://api.openweathermap.org/data/2.5/forecast',{
+			params: {
+				id: 1270260,
+				APPID: process.env.WEATHER_API
+			}
 		})
-		.then(function(response){
+		.then((response) => {
 			console.log(response);
 		})
-		.catch(function(error){
+		.catch((error) => {
 			console.log(error);
 		})
 	};
