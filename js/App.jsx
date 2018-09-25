@@ -37,19 +37,21 @@ class App extends Component {
 		super(props);
 		this.state = {
 			value: '',
-			suggestedCities: []
+			suggestedCities: [],
+			cityWeatherData: []
 		}
 	};
 
 
 	componentDidMount(){
-		this.fetchCityWeather();
+		// this.fetchCityWeather();
 	}
 
 	onChange = (event, { newValue }) => {
 	    this.setState({
 	      value: newValue
 	    });
+	    console.log(this.state.value);
 	};
 
 	// Autosuggest will call this function every time you need to update suggestions.
@@ -76,14 +78,10 @@ class App extends Component {
 	    );
 	};
 
-	fetchCityWeather = () => {
-		// Axios({
-		// 	method: 'get',
-		// 	url: 'http://api.openweathermap.org/data/2.5/forecast/daily?id=1270260&APPID=' + process.env.WEATHER_API
-		// })
+	fetchCityWeather = (cityId) => {
 		Axios.get('http://api.openweathermap.org/data/2.5/forecast',{
 			params: {
-				id: 1270260,
+				id: cityId,
 				APPID: process.env.WEATHER_API
 			}
 		})
@@ -95,6 +93,12 @@ class App extends Component {
 		})
 	};
 
+	onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
+		console.log(suggestion);
+		console.log(method);
+		let cityId = suggestion.id;
+		fetchCityWeather(cityId);
+	}
 
 	render() {
 		const { value, suggestedCities } = this.state;
@@ -119,6 +123,7 @@ class App extends Component {
 		        inputProps={inputProps} 
 		        shouldRenderSuggestions = {(v) => v.trim().length > 0}
 		        renderSuggestionsContainer={this.renderSuggestionsContainer}
+		        onSuggestionSelected={this.onSuggestionSelected}
 		    />
 	    );
 	}
