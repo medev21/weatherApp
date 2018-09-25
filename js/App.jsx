@@ -97,7 +97,7 @@ class App extends Component {
 		console.log(suggestion);
 		console.log(method);
 		let cityId = suggestion.id;
-		fetchCityWeather(cityId);
+		this.fetchCityWeather(cityId);
 	}
 
 	render() {
