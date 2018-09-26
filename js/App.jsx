@@ -90,18 +90,31 @@ class App extends Component {
 	};
 
 	fetchCityWeather = (cityId) => {
-		Axios.get('http://api.openweathermap.org/data/2.5/forecast',{
-			params: {
-				id: cityId,
-				APPID: process.env.WEATHER_API
-			}
-		})
-		.then((response) => {
+		//fetching sample request
+		Axios.get("/public/sampleWeather.json").then((response) => {
 			console.log(response);
+			console.log(response.data.cod);
+			this.setState({
+				cityWeatherData: response.data
+			});
 		})
 		.catch((error) => {
 			console.log(error);
-		})
+		});
+
+		//fetching Openweather map
+		// Axios.get('http://api.openweathermap.org/data/2.5/forecast',{
+		// 	params: {
+		// 		id: cityId,
+		// 		APPID: process.env.WEATHER_API
+		// 	}
+		// })
+		// .then((response) => {
+		// 	console.log(response);
+		// })
+		// .catch((error) => {
+		// 	console.log(error);
+		// })
 	};
 
 	onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
