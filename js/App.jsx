@@ -4,12 +4,24 @@ import Autosuggest from 'react-autosuggest';
 
 let cities;
 
-fetch("../public/cities.json").then((res) => {
-	return res.json();
-}).then((json) => {
-	let values = json;
-	cities = values.cities;	
+Axios.get("./public/cities.json").then((res) => {
+	if(res.status = 200){
+		let values = res;
+		cities = values.data.cities;	
+	}else{
+		console.log("something went wrong");
+	}
+	
+}).catch((error) => {
+	console.log(error);
 });
+
+// fetch("../public/cities.json").then((res) => {
+// 	return res.json();
+// }).then((json) => {
+// 	let values = json;
+// 	cities = values.cities;	
+// });
 
 const getSuggestions = value => {
 	const inputValue = value.trim().toLowerCase();
@@ -51,7 +63,6 @@ class App extends Component {
 	    this.setState({
 	      value: newValue
 	    });
-	    console.log(this.state.value);
 	};
 
 	// Autosuggest will call this function every time you need to update suggestions.
