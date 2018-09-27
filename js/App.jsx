@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 import Autosuggest from 'react-autosuggest';
 
+
 let cities;
 
 Axios.get("./public/cities.json").then((res) => {
@@ -92,11 +93,17 @@ class App extends Component {
 	fetchCityWeather = (cityId) => {
 		//fetching sample request
 		Axios.get("/public/sampleWeather.json").then((response) => {
-			console.log(response);
-			console.log(response.data.cod);
-			this.setState({
-				cityWeatherData: response.data
-			});
+			if(response.status === 200){
+				this.setState({
+					cityWeatherData: response.data
+				});
+
+				console.log(this.state.cityWeatherData);
+			}
+			else{
+				console.log('fetchCityWeather - something went wrong');
+			}
+			
 		})
 		.catch((error) => {
 			console.log(error);
@@ -138,17 +145,21 @@ class App extends Component {
 
 	    // Finally, render it!
 	    return (
-		    <Autosuggest
-		    	suggestions={suggestedCities}
-		        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-		        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-		        getSuggestionValue={getSuggestionValue}
-		        renderSuggestion={renderSuggestion}
-		        inputProps={inputProps} 
-		        shouldRenderSuggestions = {(v) => v.trim().length > 0}
-		        renderSuggestionsContainer={this.renderSuggestionsContainer}
-		        onSuggestionSelected={this.onSuggestionSelected}
-		    />
+	    	<div>
+			    <Autosuggest
+			    	suggestions={suggestedCities}
+			        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+			        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+			        getSuggestionValue={getSuggestionValue}
+			        renderSuggestion={renderSuggestion}
+			        inputProps={inputProps} 
+			        shouldRenderSuggestions = {(v) => v.trim().length > 0}
+			        renderSuggestionsContainer={this.renderSuggestionsContainer}
+			        onSuggestionSelected={this.onSuggestionSelected}
+			    />
+
+			    <CityWeather />
+		    </div>
 	    );
 	}
 }
