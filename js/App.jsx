@@ -98,8 +98,6 @@ class App extends Component {
 				this.setState({
 					cityWeatherData: response.data
 				});
-
-				console.log(this.state.cityWeatherData);
 			}
 			else{
 				console.log('fetchCityWeather - something went wrong');
@@ -111,10 +109,11 @@ class App extends Component {
 		});
 
 		//fetching Openweather map
+		// const weatherKey = process.env.WEATHER_API;
 		// Axios.get('http://api.openweathermap.org/data/2.5/forecast',{
 		// 	params: {
 		// 		id: cityId,
-		// 		APPID: process.env.WEATHER_API
+		// 		APPID: weatherKey
 		// 	}
 		// })
 		// .then((response) => {
@@ -128,8 +127,12 @@ class App extends Component {
 	onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
 		console.log(suggestion);
 		console.log(method);
-		let cityId = suggestion.id;
-		this.fetchCityWeather(cityId);
+
+		if(method == 'click'){
+			let cityId = suggestion.id;
+			this.fetchCityWeather(cityId);
+		}
+		
 	}
 
 	render() {
@@ -159,7 +162,7 @@ class App extends Component {
 			        onSuggestionSelected={this.onSuggestionSelected}
 			    />
 
-			    <CityWeather />
+			    <CityWeather weatherData={this.state.cityWeatherData}/>
 		    </div>
 	    );
 	}
