@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import Autosuggest from 'react-autosuggest';
+import CityWeather from './components/CityWeatherComponent';
 
 
 let cities;
