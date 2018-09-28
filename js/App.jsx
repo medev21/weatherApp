@@ -52,7 +52,8 @@ class App extends Component {
 		this.state = {
 			value: '',
 			suggestedCities: [],
-			cityWeatherData: []
+			cityWeatherData: [],
+			currentWeather: [],
 		}
 	};
 
