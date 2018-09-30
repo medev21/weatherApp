@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import Autosuggest from 'react-autosuggest';
-import CityWeather from './components/CityWeatherComponent';
+import CityWeather from './components/CityWeather';
+import SearchWeather from './components/SearchWeather';
 
 
 let cities;
@@ -151,6 +152,7 @@ class App extends Component {
 	    // Finally, render it!
 	    return (
 	    	<div>
+	    		<SearchWeather />
 			    <Autosuggest
 			    	suggestions={suggestedCities}
 			        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
