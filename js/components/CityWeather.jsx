@@ -1,27 +1,40 @@
 //this is the cityweathercomponent
 import React, { Component } from "react";
+import apis from "../utils/apis";
+
+let weatherData;
+
+apis.getWeather().then((res) => {
+	console.log("CityWeather success", res);	
+}).catch((error) => {
+	console.log("CityWeather Error", error)
+});
 
 class CityWeather extends Component {
 
-	getFahrenheit = () => {
+	// getFahrenheit = () => {
 
-	};
+	// };
 
 	render(){
 
-		let cityWeatherData = this.props.weatherData;
+		const city = this.props.city;
 
-		if(cityWeatherData.length != 0){
-			let city = cityWeatherData.city;
-			let today = cityWeatherData.list[0];
+		console.log("cityWeather render", city);
 
-			let temp = today.main.temp;
-			let tempMax = today.main.temp_max;
-			let tempMin = today.main.temp_min;
-			let weather = today.weather[0].main;
-			console.log(today);
-			console.log(weather);
-		}
+		// let cityWeatherData = this.props.weatherData;
+
+		// if(cityWeatherData.length != 0){
+		// 	let city = cityWeatherData.city;
+		// 	let today = cityWeatherData.list[0];
+
+		// 	let temp = today.main.temp;
+		// 	let tempMax = today.main.temp_max;
+		// 	let tempMin = today.main.temp_min;
+		// 	let weather = today.weather[0].main;
+		// 	console.log(today);
+		// 	console.log(weather);
+		// }
 		
 
 

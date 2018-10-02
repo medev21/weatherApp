@@ -12,15 +12,19 @@ class App extends Component {
 		this.state = {
 			value: '',
 			suggestedCities: [],
-			cityWeatherData: [],
+			// cityWeatherData: [],
 			currentWeather: [],
+			cityID: 0,
 		}
 	};
 
-	handleCityWeatherData = (city) => {
+	handleCity = (cityID) => {
+		console.log(cityID);
 		this.setState({
-			cityWeatherData: city
+			cityID: cityID
 		});
+
+		console.log("app.jsx handlecity", this.state.cityID);
 	};
 
 	handleSuggestedCities = (cities) => {
@@ -40,8 +44,8 @@ class App extends Component {
 	    // Finally, render it!
 	    return (
 	    	<div>
-	    		<SearchWeather suggestData={{value: this.state.value, suggestedCities: this.state.suggestedCities}} onSelectCity={this.handleCityWeatherData} onChange={this.handleOnChange} onSuggestedCities={this.handleSuggestedCities}/>
-			    <CityWeather weatherData={this.state.cityWeatherData}/>
+	    		<SearchWeather suggestData={{value: this.state.value, suggestedCities: this.state.suggestedCities}} onSelectCity={this.handleCity} onChange={this.handleOnChange} onSuggestedCities={this.handleSuggestedCities}/>
+			    <CityWeather city={this.state.cityID}/>
 		    </div>
 	    );
 	}

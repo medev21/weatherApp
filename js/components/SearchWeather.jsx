@@ -3,41 +3,15 @@ import Axios from "axios";
 import Autosuggest from 'react-autosuggest';
 import apis from '../utils/apis';
 
-// let cities;
-
-// fetch("../public/cities.json").then((res) => {
-// 	return res.json();
-// }).then((json) => {
-// 	let values = json;
-// 	cities = values.cities;	
-// });
-
-// const getCities = () => {
-// 	Axios.get("./public/cities.json").then((res) => {
-// 		return res;
-// 	}).then((json) => {
-// 		console.log(json.data.cities);
-// 		return json.data.cities;
-// 	}).catch((error) => {
-// 		console.log(error);
-// 	});
-// };
-
 let suggestions;
 
 apis.getCities().then((result) => {
 
 	suggestions = result.data.cities;
-	console.log("api.getCities", cities);
-	console.log(inputValue);
-
-	// return inputLength === 0 ? [] : cities.filter(city =>
-	
-	// 	city.name.toLowerCase().slice(0, inputLength) === inputValue
-	// );
 
 }).catch((error) => {
-	//error
+	console.log("SearchWeather Error", error)
+	suggestions = [];
 });
 
 
@@ -46,61 +20,10 @@ const getSuggestions = (value) => {
 	const inputValue = value.trim().toLowerCase();
 	const inputLength = inputValue.length;
 
-	// const cities = apis.getCities().then(result => result).catch(error => error);
-
-	console.log("getSuggestions", suggestions);
-
 	return inputLength === 0 ? [] : suggestions.filter(city =>
 	
 		city.name.toLowerCase().slice(0, inputLength) === inputValue
 	);
-
-
-	// let suggestions = apis.getCities().then((result) => {
-
-	// 	let cities = result.data.cities;
-	// 	console.log("api.getCities", cities);
-	// 	console.log(inputValue);
-
-	// 	return inputLength === 0 ? [] : cities.filter(city =>
-		
-	// 		city.name.toLowerCase().slice(0, inputLength) === inputValue
-	// 	);
-
-	// }).catch((error) => {
-	// 	//error
-	// });
-
-	// console.log("getSuggestions", suggestions);
-
-	// return suggestions;
-
-
-
-
-
-	// console.log('calling from getSuggestions');
-	// console.log(cities);
-
-
-	// return inputLength === 0 ? [] : cities.filter(city =>
-		
-	// 	city.name.toLowerCase().slice(0, inputLength) === inputValue
-	// );
-
-
-	// const inputValue = value.trim().toLowerCase();
-	// const inputLength = inputValue.length;
-
-	
-
-	// apis.getCities().then(cities => {
-	// 	let filteredCities = inputLength === 0 ? [] : cities.filter(city =>
-	// 		city.name.toLowerCase().slice(0, inputLength) === inputValue
-	// 	);
-
-	// 	return cb(filteredCities)
-	// });
 };
 
 // When suggestion is clicked, Autosuggest needs to populate the input
@@ -127,9 +50,6 @@ class SearchWeather extends Component {
 	 //    });
 
 	    let cities = getSuggestions(value);
-
-	    console.log("onSuggestionsFetchRequested", cities);
-
 	    this.props.onSuggestedCities(cities);
 	};
 
@@ -153,6 +73,7 @@ class SearchWeather extends Component {
 		//fetching sample request
 		Axios.get("/public/sampleWeather.json").then((response) => {
 			if(response.status === 200){
+				console.log("fetchCityWeather", response.data);
 				return response.data
 			}
 			else{
@@ -181,27 +102,17 @@ class SearchWeather extends Component {
 	};
 
 	onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
-		console.log(suggestion);
-		console.log(method);
 
 		if(method == 'click'){
 			let cityId = suggestion.id;
-			let data = this.fetchCityWeather(cityId);
-			this.props.onSelectCity(data); //pass data to parent
+			// let data = this.fetchCityWeather(cityId);
+			this.props.onSelectCity(cityId); //pass data to parent
 		}
 	};
-
-
-	componentDidMount = () => {
-		console.log('componentDidMount');
-	}
-
 
 	render(){
 		const value = this.props.suggestData.value;
 		const suggestedCities = this.props.suggestData.suggestedCities;
-
-		console.log(suggestedCities);
 
 	    // Autosuggest InputProps
 	    const inputProps = {

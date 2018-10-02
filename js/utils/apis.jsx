@@ -23,6 +23,13 @@ export default {
 				.catch(error => { reject(error)})
 		}); 
 	},
+	getWeather: function(){
+		return new Promise((resolve, reject) => {
+			Axios.get("/public/sampleWeather.json")
+				.then((response) => { resolve(response) })
+				.catch((error) => { reject(error) });
+		});
+	},
 	// getCities: function(){
 	// 	return fetch("../public/cities.json").then((res) => {
 	// 		console.log("from fetch first", res)
