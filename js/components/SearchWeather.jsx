@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import Autosuggest from 'react-autosuggest';
+import apis from '../utils/apis';
 
 // let cities;
 
@@ -11,23 +12,40 @@ import Autosuggest from 'react-autosuggest';
 // 	cities = values.cities;	
 // });
 
-const getCities = () => {
-	Axios.get("./public/cities.json").then((res) => {
-		return res;
-	}).then((json) => {
-		console.log(json.data.cities);
-		return json.data.cities;
-	}).catch((error) => {
-		console.log(error);
-	});
-};
+// const getCities = () => {
+// 	Axios.get("./public/cities.json").then((res) => {
+// 		return res;
+// 	}).then((json) => {
+// 		console.log(json.data.cities);
+// 		return json.data.cities;
+// 	}).catch((error) => {
+// 		console.log(error);
+// 	});
+// };
 
-const getSuggestions = value => {
+
+
+const getSuggestions = (value) => {
 	const inputValue = value.trim().toLowerCase();
 	const inputLength = inputValue.length;
 
-	const cities = getCities();
 
+	// const cities = apis.getCities().then((data) => {
+	// 	console.log(data);
+	// 	data;
+	// });
+
+	// const cities = apis.getCities().then((data) => {
+	// 	return data;
+	// }).then((json) => {
+	// 	console.log("from getCities",json);
+	// })
+
+	const cities = apis.getCities();
+
+	// const cities = apis.getTest();//this is working
+
+	console.log('calling from getSuggestions');
 	console.log(cities);
 
 
