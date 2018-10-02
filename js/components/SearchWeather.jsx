@@ -23,36 +23,84 @@ import apis from '../utils/apis';
 // 	});
 // };
 
+let suggestions;
+
+apis.getCities().then((result) => {
+
+	suggestions = result.data.cities;
+	console.log("api.getCities", cities);
+	console.log(inputValue);
+
+	// return inputLength === 0 ? [] : cities.filter(city =>
+	
+	// 	city.name.toLowerCase().slice(0, inputLength) === inputValue
+	// );
+
+}).catch((error) => {
+	//error
+});
+
 
 
 const getSuggestions = (value) => {
 	const inputValue = value.trim().toLowerCase();
 	const inputLength = inputValue.length;
 
+	// const cities = apis.getCities().then(result => result).catch(error => error);
 
-	// const cities = apis.getCities().then((data) => {
-	// 	console.log(data);
-	// 	data;
-	// });
+	console.log("getSuggestions", suggestions);
 
-	// const cities = apis.getCities().then((data) => {
-	// 	return data;
-	// }).then((json) => {
-	// 	console.log("from getCities",json);
-	// })
-
-	const cities = apis.getCities();
-
-	// const cities = apis.getTest();//this is working
-
-	console.log('calling from getSuggestions');
-	console.log(cities);
-
-
-	return inputLength === 0 ? [] : cities.filter(city =>
-		
+	return inputLength === 0 ? [] : suggestions.filter(city =>
+	
 		city.name.toLowerCase().slice(0, inputLength) === inputValue
 	);
+
+
+	// let suggestions = apis.getCities().then((result) => {
+
+	// 	let cities = result.data.cities;
+	// 	console.log("api.getCities", cities);
+	// 	console.log(inputValue);
+
+	// 	return inputLength === 0 ? [] : cities.filter(city =>
+		
+	// 		city.name.toLowerCase().slice(0, inputLength) === inputValue
+	// 	);
+
+	// }).catch((error) => {
+	// 	//error
+	// });
+
+	// console.log("getSuggestions", suggestions);
+
+	// return suggestions;
+
+
+
+
+
+	// console.log('calling from getSuggestions');
+	// console.log(cities);
+
+
+	// return inputLength === 0 ? [] : cities.filter(city =>
+		
+	// 	city.name.toLowerCase().slice(0, inputLength) === inputValue
+	// );
+
+
+	// const inputValue = value.trim().toLowerCase();
+	// const inputLength = inputValue.length;
+
+	
+
+	// apis.getCities().then(cities => {
+	// 	let filteredCities = inputLength === 0 ? [] : cities.filter(city =>
+	// 		city.name.toLowerCase().slice(0, inputLength) === inputValue
+	// 	);
+
+	// 	return cb(filteredCities)
+	// });
 };
 
 // When suggestion is clicked, Autosuggest needs to populate the input
@@ -74,9 +122,15 @@ class SearchWeather extends Component {
 	// Autosuggest will call this function every time you need to update suggestions.
 	// You already implemented this logic above, so just use it.
 	onSuggestionsFetchRequested = ({ value }) => {
-		this.setState({
-	      suggestedCities: getSuggestions(value)
-	    });
+		// this.setState({
+	 //      suggestedCities: getSuggestions(value)
+	 //    });
+
+	    let cities = getSuggestions(value);
+
+	    console.log("onSuggestionsFetchRequested", cities);
+
+	    this.props.onSuggestedCities(cities);
 	};
 
 	// Autosuggest will call this function every time you need to clear suggestions.
@@ -146,6 +200,8 @@ class SearchWeather extends Component {
 	render(){
 		const value = this.props.suggestData.value;
 		const suggestedCities = this.props.suggestData.suggestedCities;
+
+		console.log(suggestedCities);
 
 	    // Autosuggest InputProps
 	    const inputProps = {
