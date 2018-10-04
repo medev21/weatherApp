@@ -40,17 +40,19 @@ class CityWeather extends Component {
 		// 	console.log(error);
 		// });
 
-		if(cityID != 0){
+		// if(cityID != 0){
 
-			console.log('before api call', weatherData);
+		// 	console.log('before api call', weatherData);
 
-			apis.getWeather(cityID).then((res) => {
-				this.props.onWeatherDataChange(res.data)
-			}).catch((error) => {
-				console.log(error);
-			});
+		// 	apis.getWeather(cityID).then((res) => {
+		// 		this.props.onWeatherDataChange(res.data)
+		// 	}).catch((error) => {
+		// 		console.log(error);
+		// 	});
 
-		}
+		// }
+
+		
 		// else{
 		// 	weatherData = []
 		// }

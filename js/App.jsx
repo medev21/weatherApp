@@ -57,7 +57,7 @@ class App extends Component {
 	    // Finally, render it!
 	    return (
 	    	<div>
-	    		<SearchWeather suggestData={{value: this.state.value, suggestedCities: this.state.suggestedCities}} onSelectCity={this.handleCity} onChange={this.handleOnChange} onSuggestedCities={this.handleSuggestedCities}/>
+	    		<SearchWeather suggestData={{value: this.state.value, suggestedCities: this.state.suggestedCities}} onSelectCity={this.handleCity} onChange={this.handleOnChange} onSuggestedCities={this.handleSuggestedCities} onWeatherDataChange={this.handleWeatherDataChange}/>
 			    {weatherComponent}
 		    </div>
 	    );
