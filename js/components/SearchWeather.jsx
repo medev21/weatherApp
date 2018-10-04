@@ -55,9 +55,10 @@ class SearchWeather extends Component {
 
 	// Autosuggest will call this function every time you need to clear suggestions.
 	onSuggestionsClearRequested = () => {
-	    this.setState({
-	      suggestedCities: []
-		});
+	 //    this.setState({
+	 //      suggestedCities: []
+		// });
+		this.props.onClearSuggestions();
 	};
 
 	renderSuggestionsContainer = ({ containerProps, children, query }) => {
