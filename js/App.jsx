@@ -12,19 +12,18 @@ class App extends Component {
 		this.state = {
 			value: '',
 			suggestedCities: [],
-			// cityWeatherData: [],
+			weatherData: [],
 			currentWeather: [],
 			cityID: 0,
+			isWeatherRendering: false
 		}
 	};
 
-	handleCity = (cityID) => {
-		console.log(cityID);
+	handleCity = (cityID, boolean) => {
 		this.setState({
-			cityID: cityID
+			cityID: cityID,
+			isWeatherRendering: boolean
 		});
-
-		console.log("app.jsx handlecity", this.state.cityID);
 	};
 
 	handleSuggestedCities = (cities) => {
@@ -37,15 +36,29 @@ class App extends Component {
 		this.setState({
 	    	value: newValue
 	    });
-	}
+	};
+
+	handleWeatherDataChange = (weatherData) => {
+		this.setState({
+			weatherData: weatherData
+		});
+	};
+
 
 	render() {
+
+		let isWeatherRendering = this.state.isWeatherRendering;
+		let weatherComponent;
+
+		if(isWeatherRendering){
+			weatherComponent = <CityWeather city={this.state.cityID} weatherData={this.state.weatherData} onWeatherDataChange={this.handleWeatherDataChange}/>
+		}
 
 	    // Finally, render it!
 	    return (
 	    	<div>
 	    		<SearchWeather suggestData={{value: this.state.value, suggestedCities: this.state.suggestedCities}} onSelectCity={this.handleCity} onChange={this.handleOnChange} onSuggestedCities={this.handleSuggestedCities}/>
-			    <CityWeather city={this.state.cityID}/>
+			    {weatherComponent}
 		    </div>
 	    );
 	}

@@ -23,7 +23,7 @@ export default {
 				.catch(error => { reject(error)})
 		}); 
 	},
-	getWeather: function(){
+	getWeather: function(cityID){
 		return new Promise((resolve, reject) => {
 			Axios.get("/public/sampleWeather.json")
 				.then((response) => { resolve(response) })

@@ -69,44 +69,44 @@ class SearchWeather extends Component {
 	    );
 	};
 
-	fetchCityWeather = (cityId) => {
-		//fetching sample request
-		Axios.get("/public/sampleWeather.json").then((response) => {
-			if(response.status === 200){
-				console.log("fetchCityWeather", response.data);
-				return response.data
-			}
-			else{
-				console.log('fetchCityWeather - something went wrong');
-			}
+	// fetchCityWeather = (cityId) => {
+	// 	//fetching sample request
+	// 	Axios.get("/public/sampleWeather.json").then((response) => {
+	// 		if(response.status === 200){
+	// 			console.log("fetchCityWeather", response.data);
+	// 			return response.data
+	// 		}
+	// 		else{
+	// 			console.log('fetchCityWeather - something went wrong');
+	// 		}
 			
-		})
-		.catch((error) => {
-			console.log(error);
-		});
+	// 	})
+	// 	.catch((error) => {
+	// 		console.log(error);
+	// 	});
 
-		//fetching Openweather map
-		// const weatherKey = process.env.WEATHER_API;
-		// Axios.get('http://api.openweathermap.org/data/2.5/forecast',{
-		// 	params: {
-		// 		id: cityId,
-		// 		APPID: weatherKey
-		// 	}
-		// })
-		// .then((response) => {
-		// 	console.log(response);
-		// })
-		// .catch((error) => {
-		// 	console.log(error);
-		// })
-	};
+	// 	//fetching Openweather map
+	// 	// const weatherKey = process.env.WEATHER_API;
+	// 	// Axios.get('http://api.openweathermap.org/data/2.5/forecast',{
+	// 	// 	params: {
+	// 	// 		id: cityId,
+	// 	// 		APPID: weatherKey
+	// 	// 	}
+	// 	// })
+	// 	// .then((response) => {
+	// 	// 	console.log(response);
+	// 	// })
+	// 	// .catch((error) => {
+	// 	// 	console.log(error);
+	// 	// })
+	// };
 
 	onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
 
 		if(method == 'click'){
 			let cityId = suggestion.id;
 			// let data = this.fetchCityWeather(cityId);
-			this.props.onSelectCity(cityId); //pass data to parent
+			this.props.onSelectCity(cityId, true); //pass data to parent
 		}
 	};
 
