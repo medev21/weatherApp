@@ -76,7 +76,9 @@ class SearchWeather extends Component {
 		apis.getWeather(cityId).then((res) => {
 			// this.props.onWeatherDataChange(res.data)
 			let data = res.data;
-			this.props.onSelectCity(cityId, true, data); //pass data to parent
+			let boolean = !this.props.suggestData.isWeatherRendering;
+			console.log(boolean);
+			this.props.onSelectCity(cityId, boolean, data); //pass data to parent
 		}).catch((error) => {
 			console.log(error);
 			let data = [];
