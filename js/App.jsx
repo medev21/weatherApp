@@ -81,6 +81,3 @@ class App extends Component {
 }
 
 export default App;
-
-// const key = process.env.WEATHER_API;
-// const { value, suggestedCities } = this.state;

@@ -2,14 +2,6 @@
 import React, { Component } from "react";
 import apis from "../utils/apis";
 
-// let weatherData;
-
-// apis.getWeather().then((res) => {
-// 	console.log("CityWeather success", res);	
-// }).catch((error) => {
-// 	console.log("CityWeather Error", error)
-// });
-
 class CityWeather extends Component {
 
 	// getFahrenheit = () => {
@@ -20,52 +12,12 @@ class CityWeather extends Component {
 	// 	console.log("mounted after click");
 	// };
 
-	// getWeather = (cityID) => {
-	// 	apis.getWeather().then((res) => {
-	// 		console.log("CityWeather success", res.data);
-	// 		res;	
-	// 	}).catch((error) => {
-	// 		console.log("CityWeather Error", error)
-	// 	});
-	// }
-
 	render(){
 
-		const cityID = this.props.city;
-		const weatherData = this.props.weatherData;
-
-		// const weatherData = apis.getWeather(cityID).then((res) => {
-		// 	return res
-		// }).catch((error) => {
-		// 	console.log(error);
-		// });
-
-		// if(cityID != 0){
-
-		// 	console.log('before api call', weatherData);
-
-		// 	apis.getWeather(cityID).then((res) => {
-		// 		this.props.onWeatherDataChange(res.data)
-		// 	}).catch((error) => {
-		// 		console.log(error);
-		// 	});
-
-		// }
-
-		
-		// else{
-		// 	weatherData = []
-		// }
-
-
-
-		// const weatherData = cityID === 0 ? [] : apis.getWeather(cityID).then((res) => { res });
+		let cityID = this.props.city;
+		let weatherData = this.props.weatherData;
 
 		console.log("cityWeather render", weatherData);
-
-
-
-		// let cityWeatherData = this.props.weatherData;
 
 		// if(cityWeatherData.length != 0){
 		// 	let city = cityWeatherData.city;

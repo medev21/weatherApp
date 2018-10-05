@@ -71,10 +71,8 @@ class SearchWeather extends Component {
 	};
 
 	fetchCityWeather = (cityId) => {
-		//fetching sample request
-
+		
 		apis.getWeather(cityId).then((res) => {
-			// this.props.onWeatherDataChange(res.data)
 			let data = res.data;
 			let boolean = !this.props.suggestData.isWeatherRendering;
 			console.log(boolean);
@@ -83,20 +81,6 @@ class SearchWeather extends Component {
 			console.log(error);
 			let data = [];
 		});
-		//fetching Openweather map
-		// const weatherKey = process.env.WEATHER_API;
-		// Axios.get('http://api.openweathermap.org/data/2.5/forecast',{
-		// 	params: {
-		// 		id: cityId,
-		// 		APPID: weatherKey
-		// 	}
-		// })
-		// .then((response) => {
-		// 	console.log(response);
-		// })
-		// .catch((error) => {
-		// 	console.log(error);
-		// })
 	};
 
 	onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
