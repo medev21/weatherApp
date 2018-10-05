@@ -72,12 +72,15 @@ class SearchWeather extends Component {
 
 	fetchCityWeather = (cityId) => {
 		//fetching sample request
+
 		apis.getWeather(cityId).then((res) => {
-			this.props.onWeatherDataChange(res.data)
+			// this.props.onWeatherDataChange(res.data)
+			let data = res.data;
+			this.props.onSelectCity(cityId, true, data); //pass data to parent
 		}).catch((error) => {
 			console.log(error);
+			let data = [];
 		});
-
 		//fetching Openweather map
 		// const weatherKey = process.env.WEATHER_API;
 		// Axios.get('http://api.openweathermap.org/data/2.5/forecast',{
@@ -98,10 +101,7 @@ class SearchWeather extends Component {
 
 		if(method == 'click'){
 			let cityId = suggestion.id;
-			// let data = this.fetchCityWeather(cityId);
-			// this.props.onWeatherDataChange(data);
 			this.fetchCityWeather(cityId);
-			this.props.onSelectCity(cityId, true); //pass data to parent
 		}
 	};
 
