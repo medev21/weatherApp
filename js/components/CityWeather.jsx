@@ -12,7 +12,7 @@ class CityWeather extends Component {
 
 		for (let value of arr) {
 			let num = (value - 273.15) * 9/5 + 32;
-			result.push(num);
+			result.push(Math.round(num));
 		}
 		let temp = result[0];
 		let minTemp = result[1];
