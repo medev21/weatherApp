@@ -3,7 +3,21 @@ import React, { Component } from "react";
 
 class CityWeather extends Component {
 
-	// (280.89K − 273.15) × 9/5 + 32
+	getCelsius = (now, minimum, maximum) => {
+		let arr = [now , minimum , maximum];
+		let result = [];
+
+		for (let value of arr) {
+			let num = value - 273.15;
+			result.push(Math.round(num));
+		}
+
+		let tempCels = result[0];
+		let minCels = result[1];
+		let maxCels = result[2];
+
+		return {tempCels, minCels, maxCels}
+	};	
 
 	getFahrenheit = (now, minimum, maximum) => {
 
@@ -30,12 +44,17 @@ class CityWeather extends Component {
 
 		let currentWeather = weatherData.list[0];
 		let condition = currentWeather.weather[0].main;
+		let kelvintemp = currentWeather.main.temp;
+		let kelvinMin = currentWeather.main.temp_min;
+		let kelvinMax = currentWeather.main.temp_max;
 
 
-		let {temp, minTemp, maxTemp} = this.getFahrenheit(currentWeather.main.temp, currentWeather.main.temp_min, currentWeather.main.temp_max);
+		let {temp, minTemp, maxTemp} = this.getFahrenheit(kelvintemp, kelvinMin, kelvinMax);
+		let {tempCels, minCels, maxCels} = this.getCelsius(kelvintemp, kelvinMin, kelvinMax);
 
 		// console.log(temp);
 		console.log(temp, minTemp, maxTemp);
+		console.log(tempCels, minCels, maxCels);
 
 		return(
 			<div>
