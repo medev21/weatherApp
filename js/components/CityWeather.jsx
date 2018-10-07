@@ -17,7 +17,18 @@ class CityWeather extends Component {
 		let cityID = this.props.city;
 		let weatherData = this.props.weatherData;
 
-		console.log("cityWeather render", weatherData);
+		let currentWeather = weatherData.list[0];
+		let temp = currentWeather.main.temp;
+		let maxTemp = currentWeather.main.temp_max;
+		let minTemp = currentWeather.main.temp_min;
+		let condition = currentWeather.weather[0].main;
+
+		console.log("cityWeather render", currentWeather);
+		console.log("cityWeather render", temp);
+		console.log("cityWeather render", maxTemp);
+		console.log("cityWeather render", minTemp);
+		console.log("cityWeather render", condition);
+
 
 		// if(cityWeatherData.length != 0){
 		// 	let city = cityWeatherData.city;
@@ -34,10 +45,38 @@ class CityWeather extends Component {
 
 
 		return(
-			<h2>hello this is the CityWeatherComponent</h2>
+			<div>
+				<h2>condition</h2>
+				<p>{condition}</p>
+
+				<br/>
+				<h2>current temp</h2>
+				<p>{temp}</p>
+
+				<br/>
+				<h2>max temp</h2>
+				<p>{maxTemp}</p>
+				<br/>
+				<h2>min temp</h2>
+				<p>{minTemp}</p>
+			</div>
+
+			
 		);
 	}
 
 }
 
 export default CityWeather;
+
+
+			// 	<br>
+			// 	<h2>current temp</h2>
+			// 	<p>{temp}</p>
+			// </div>
+			// 	<br>
+			// 	<h2>max temp</h2>
+			// 	<p>{maxTemp}</p>
+			// 	<br>
+			// 	<h2>min temp</h2>
+			// 	<p>{minTemp}</p>
