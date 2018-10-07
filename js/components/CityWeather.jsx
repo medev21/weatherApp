@@ -37,11 +37,14 @@ class CityWeather extends Component {
 		return {temp, minTemp, maxTemp};
 	};
 
+	convertCelsius = () => {
+		console.log("i'm converting...")
+	}
+
 	render(){
 
 		let cityID = this.props.city;
 		let weatherData = this.props.weatherData;
-
 		let currentWeather = weatherData.list[0];
 		let condition = currentWeather.weather[0].main;
 		let kelvintemp = currentWeather.main.temp;
@@ -55,6 +58,8 @@ class CityWeather extends Component {
 		// console.log(temp);
 		console.log(temp, minTemp, maxTemp);
 		console.log(tempCels, minCels, maxCels);
+
+		//create a button
 
 		return(
 			<div>
@@ -71,6 +76,7 @@ class CityWeather extends Component {
 				<br/>
 				<h2>min temp</h2>
 				<p>{minTemp}</p>
+				<button onClick={this.convertCelsius}>convert</button>
 			</div>
 
 			
