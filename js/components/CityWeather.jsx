@@ -26,7 +26,7 @@ class CityWeather extends Component {
 	};
 
 	getCelsius = () => {
-		let {current, min, max} = getCurrentTemp();
+		let {current, min, max} = this.getCurrentTemp();
 		let arr = [current, min, max];
 		let result = [];
 
@@ -60,11 +60,7 @@ class CityWeather extends Component {
 	};
 
 	componentDidMount = () => {
-		let isFahrenheit = this.state.fahrenheit;
-		
-		if(isFahrenheit){
-			this.getFahrenheit();
-		}
+		this.getFahrenheit();
 	};
 
 
@@ -90,6 +86,10 @@ class CityWeather extends Component {
 
 		return element;
 	};
+
+	convertCelsius = () => { this.getCelsius(); };
+
+	convertFahrenheit = () => { this.getFahrenheit(); };
 
 	render(){
 
@@ -124,6 +124,7 @@ class CityWeather extends Component {
 			<div>
 				{this.renderTemp()}
 				<button style={{ background: "green"}} onClick={this.convertCelsius}>convert celsius</button>
+				<button style={{ background: "blue"}} onClick={this.convertFahrenheit}>convert fahrenheit</button>
 			</div>
 
 			
