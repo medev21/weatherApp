@@ -3,55 +3,128 @@ import React, { Component } from "react";
 
 class CityWeather extends Component {
 
-	// (280.89K − 273.15) × 9/5 + 32
+	constructor(props){
+		super(props);
+		this.state = {
+			fahrenheit: true,
+			cityID: this.props.city,
+			weather: this.props.weatherData,
+			condition: this.props.weatherData.list[0].weather[0].main,
+			current: 0,
+			min: 0,
+			max: 0
+		}
+	};
 
-	getFahrenheit = (now, minimum, maximum) => {
+	getCurrentTemp = () => {
+		let currentWeather = this.state.weather.list[0];
+		let current = currentWeather.main.temp;
+		let min = currentWeather.main.temp_min;
+		let max = currentWeather.main.temp_max;
 
-		let arr = [now , minimum , maximum];
+		return {current, min, max};
+	};
+
+	getCelsius = () => {
+		let {current, min, max} = this.getCurrentTemp();
+		let arr = [current, min, max];
+		let result = [];
+
+		for (let value of arr) {
+			let num = value - 273.15;
+			result.push(Math.round(num));
+		}
+
+		this.setState({
+			current: result[0],
+			min: result[1],
+			max: result[2]
+		});
+	};	
+
+	getFahrenheit = () => {
+		let {current, min, max} = this.getCurrentTemp();
+		let arr = [current, min, max];
 		let result = [];
 
 		for (let value of arr) {
 			let num = (value - 273.15) * 9/5 + 32;
 			result.push(Math.round(num));
 		}
-		let temp = result[0];
-		let minTemp = result[1];
-		let maxTemp = result[2];
 
-		console.log(result);
-
-		return {temp, minTemp, maxTemp};
+		this.setState({
+			current: result[0],
+			min: result[1],
+			max: result[2]
+		});
 	};
 
-	render(){
-
-		let cityID = this.props.city;
-		let weatherData = this.props.weatherData;
-
-		let currentWeather = weatherData.list[0];
-		let condition = currentWeather.weather[0].main;
+	componentDidMount = () => {
+		this.getFahrenheit();
+	};
 
 
-		let {temp, minTemp, maxTemp} = this.getFahrenheit(currentWeather.main.temp, currentWeather.main.temp_min, currentWeather.main.temp_max);
+	renderTemp = () => {
 
-		// console.log(temp);
-		console.log(temp, minTemp, maxTemp);
-
-		return(
+		let element = 
 			<div>
 				<h2>condition</h2>
-				<p>{condition}</p>
+				<p>{this.state.condition}</p>
 
 				<br/>
 				<h2>current temp</h2>
-				<p>{temp}</p>
+				<p>{this.state.current}</p>
 
 				<br/>
 				<h2>max temp</h2>
-				<p>{maxTemp}</p>
+				<p>{this.state.max}</p>
 				<br/>
 				<h2>min temp</h2>
-				<p>{minTemp}</p>
+				<p>{this.state.min}</p>
+			</div>;
+		
+
+		return element;
+	};
+
+	convertCelsius = () => { this.getCelsius(); };
+
+	convertFahrenheit = () => { this.getFahrenheit(); };
+
+	render(){
+
+		// let cityID = this.props.city;
+		// let weatherData = this.props.weatherData;
+		// let currentWeather = weatherData.list[0];
+		// let condition = currentWeather.weather[0].main;
+		// let kelvintemp = currentWeather.main.temp;
+		// let kelvinMin = currentWeather.main.temp_min;
+		// let kelvinMax = currentWeather.main.temp_max;
+
+
+		// let {temp, minTemp, maxTemp} = this.getFahrenheit(kelvintemp, kelvinMin, kelvinMax);
+		// // let {tempCels, minCels, maxCels} = this.getCelsius(kelvintemp, kelvinMin, kelvinMax);
+
+		// // console.log(temp);
+		// console.log(temp, minTemp, maxTemp);
+		// console.log(tempCels, minCels, maxCels);
+
+
+		// let isFahrenheit = this.state.fahrenheit;
+
+		// if(isFahrenheit){
+
+		// }else{
+
+		// }
+
+		//create a button
+
+		return(
+			<div>
+				{this.renderTemp()}
+				<button style={{ background: "green"}} onClick={this.convertCelsius}>convert celsius</button>
+				<button style={{ background: "blue"}} onClick={this.convertFahrenheit}>convert fahrenheit</button>
 			</div>
 
 			
