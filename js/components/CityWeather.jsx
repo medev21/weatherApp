@@ -16,7 +16,7 @@ class CityWeather extends Component {
 		}
 	};
 
-	getCurrentTemp = () => {
+	getInitialTemp = () => {
 		let currentWeather = this.state.weather.list[0];
 		let current = currentWeather.main.temp;
 		let min = currentWeather.main.temp_min;
@@ -26,43 +26,49 @@ class CityWeather extends Component {
 	};
 
 	getCelsius = () => {
-		let {current, min, max} = this.getCurrentTemp();
-		let arr = [current, min, max];
+		let tempObj = this.getInitialTemp();
 		let result = [];
 
-		for (let value of arr) {
-			let num = value - 273.15;
-			result.push(Math.round(num));
+		for(let value in tempObj){
+			if(tempObj.hasOwnProperty(value)){
+				let num = tempObj[value] - 273.15;
+				result.push(Math.round(num));
+			}
 		}
 
-		this.setState({
-			current: result[0],
-			min: result[1],
-			max: result[2]
-		});
+		this.handleTempChange(result);
+		
 	};	
 
 	getFahrenheit = () => {
-		let {current, min, max} = this.getCurrentTemp();
-		let arr = [current, min, max];
+		let tempObj = this.getInitialTemp();
 		let result = [];
 
-		for (let value of arr) {
-			let num = (value - 273.15) * 9/5 + 32;
-			result.push(Math.round(num));
+		for(let value in tempObj){
+			if(tempObj.hasOwnProperty(value)){
+				let num = (tempObj[value] - 273.15) * 9/5 + 32;
+				result.push(Math.round(num));
+			}
 		}
 
-		this.setState({
-			current: result[0],
-			min: result[1],
-			max: result[2]
-		});
+		this.handleTempChange(result);
 	};
 
 	componentDidMount = () => {
 		this.getFahrenheit();
 	};
 
+	convertCelsius = () => { this.getCelsius(); };
+
+	convertFahrenheit = () => { this.getFahrenheit(); };
+
+	handleTempChange = (result) => {
+		this.setState({
+			current: result[0],
+			min: result[1],
+			max: result[2]
+		});
+	};
 
 	renderTemp = () => {
 
@@ -87,38 +93,7 @@ class CityWeather extends Component {
 		return element;
 	};
 
-	convertCelsius = () => { this.getCelsius(); };
-
-	convertFahrenheit = () => { this.getFahrenheit(); };
-
 	render(){
-
-		// let cityID = this.props.city;
-		// let weatherData = this.props.weatherData;
-		// let currentWeather = weatherData.list[0];
-		// let condition = currentWeather.weather[0].main;
-		// let kelvintemp = currentWeather.main.temp;
-		// let kelvinMin = currentWeather.main.temp_min;
-		// let kelvinMax = currentWeather.main.temp_max;
-
-
-		// let {temp, minTemp, maxTemp} = this.getFahrenheit(kelvintemp, kelvinMin, kelvinMax);
-		// // let {tempCels, minCels, maxCels} = this.getCelsius(kelvintemp, kelvinMin, kelvinMax);
-
-		// // console.log(temp);
-		// console.log(temp, minTemp, maxTemp);
-		// console.log(tempCels, minCels, maxCels);
-
-
-		// let isFahrenheit = this.state.fahrenheit;
-
-		// if(isFahrenheit){
-
-		// }else{
-
-		// }
-
-		//create a button
 
 		return(
 			<div>
