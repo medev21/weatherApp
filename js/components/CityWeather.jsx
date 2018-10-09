@@ -93,33 +93,6 @@ class CityWeather extends Component {
 
 	render(){
 
-		// let cityID = this.props.city;
-		// let weatherData = this.props.weatherData;
-		// let currentWeather = weatherData.list[0];
-		// let condition = currentWeather.weather[0].main;
-		// let kelvintemp = currentWeather.main.temp;
-		// let kelvinMin = currentWeather.main.temp_min;
-		// let kelvinMax = currentWeather.main.temp_max;
-
-
-		// let {temp, minTemp, maxTemp} = this.getFahrenheit(kelvintemp, kelvinMin, kelvinMax);
-		// // let {tempCels, minCels, maxCels} = this.getCelsius(kelvintemp, kelvinMin, kelvinMax);
-
-		// // console.log(temp);
-		// console.log(temp, minTemp, maxTemp);
-		// console.log(tempCels, minCels, maxCels);
-
-
-		// let isFahrenheit = this.state.fahrenheit;
-
-		// if(isFahrenheit){
-
-		// }else{
-
-		// }
-
-		//create a button
-
 		return(
 			<div>
 				{this.renderTemp()}
