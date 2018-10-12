@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 import Autosuggest from 'react-autosuggest';
 import apis from '../utils/apis';
-import Background from '../../images/introImage.jpg'
+import Background from '../../images/introImageC.jpg'
 
 let suggestions;
 
@@ -115,6 +115,7 @@ class SearchWeather extends Component {
 		return(
 			<div className="searchContainer" style={introStyle}>
 				<div className="headerSection">
+					<h2>Weather Scan</h2>
 				</div>
 				<div className="searchSection">
 					<Autosuggest
