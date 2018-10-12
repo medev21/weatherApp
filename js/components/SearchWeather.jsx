@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 import Autosuggest from 'react-autosuggest';
 import apis from '../utils/apis';
+import Background from '../../images/introImage.jpg'
 
 let suggestions;
 
@@ -102,18 +103,34 @@ class SearchWeather extends Component {
 	      onChange: this.onChange
 	    };
 
+	    const introStyle = {
+	    	backgroundImage: `url(${Background})`,
+	    	backgroundSize: "cover",
+	    	backgroundPosition: "center",
+	    	backgroundRepeat: "no-repeat"
+	    }
+
+	    console.log(introStyle);
+
 		return(
-			<Autosuggest
-		    	suggestions={suggestedCities}
-		        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-		        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-		        getSuggestionValue={getSuggestionValue}
-		        renderSuggestion={renderSuggestion}
-		        inputProps={inputProps} 
-		        shouldRenderSuggestions = {(v) => v.trim().length > 0}
-		        renderSuggestionsContainer={this.renderSuggestionsContainer}
-		        onSuggestionSelected={this.onSuggestionSelected}
-		    />
+			<div className="searchContainer" style={introStyle}>
+				<div className="headerSection">
+				</div>
+				<div className="searchSection">
+					<Autosuggest
+				    	suggestions={suggestedCities}
+				        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+				        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+				        getSuggestionValue={getSuggestionValue}
+				        renderSuggestion={renderSuggestion}
+				        inputProps={inputProps} 
+				        shouldRenderSuggestions = {(v) => v.trim().length > 0}
+				        renderSuggestionsContainer={this.renderSuggestionsContainer}
+				        onSuggestionSelected={this.onSuggestionSelected}
+				    />
+			    </div>
+			</div>
+			
 		);
 	}
 }

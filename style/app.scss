@@ -1,1 +1,18 @@
 // this is the app scss
+#weatherapp{
+	height: 100%;
+
+	div.mainContainer{
+		height: 100%;
+
+		div.searchContainer{
+			height: 100%;
+
+			div.headerSection{}
+
+			div.searchSection{}
+		}
+
+		//here goes the weather component css
+	}
+}

@@ -3,8 +3,6 @@ import CityWeather from './components/CityWeather';
 import SearchWeather from './components/SearchWeather';
 
 
-
-
 class App extends Component {
 
 	constructor(props){
@@ -66,7 +64,7 @@ class App extends Component {
 
 	    // Finally, render it!
 	    return (
-	    	<div>
+	    	<div className="mainContainer">
 	    		{/*<SearchWeather suggestData={{value: this.state.value, suggestedCities: this.state.suggestedCities, isWeatherRendering: this.state.isWeatherRendering}} 
 	    		onSelectCity={this.handleCity} 
 	    		onChange={this.handleOnChange} 
