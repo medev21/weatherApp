@@ -49,7 +49,8 @@ const config = {
 		new CopyWebpackPlugin([
 			{ from: './index.html', to: './index.html' },
 			{ from: './public/city.list.json', to: './public/cities.json'},
-			{ from: './public/sampleWeather.json', to: './public/sampleWeather.json'}
+			{ from: './public/sampleWeather.json', to: './public/sampleWeather.json'},
+			{ from: './images/', to: './images/'}
 		]),
 		new Dotenv()
 	]
