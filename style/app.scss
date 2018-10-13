@@ -104,11 +104,70 @@
 		// flex-direction: column;
 
 		div.conditionSection{
+			width: 320px;
+
+			div.weatherStatus{
+				overflow: auto;
+
+				div.weatherIcon{float: left;}
+
+				div.weatherCondition{
+					float: right;
+					font-size: 40px;
+					line-height: 180px;
+				}
+			}
+
+			div.currentTempBox{
+				overflow: auto;
+
+				div.currentTemp{
+					float: left;
+					overflow: auto;
+					width: 250px;
+
+					div.tempNum{
+						float: left;
+						font-size: 130px;
+						width: 200px;
+						text-align: right;
+					}
+
+					div.degreeImg{
+						float: right;
+					}
+
+				}
+
+				div.tempConversionBox{
+					float: left;
+					font-size: 60px;
+					margin-left: 30px;
+
+					div.tempButton{cursor: pointer;}
+
+					div.fahrenheitBtn{font-weight: 700;}
+				}
+			}
+
+			div.highLowTempBox{
+			    overflow: auto;
+			    font-size: 25px;
+			    /* width: 100%; */
+			    display: flex;
+			    justify-content: space-evenly;
+			    align-items: center;
+
+				// div.lowTemp{
+				// 	float: left;
+				// }
+
+				// div.highTemp{
+				// 	float: right;
+				// }
+			}
 
 		}
 
-		div.tempConversionSection{
-
-		}
 	}
 }

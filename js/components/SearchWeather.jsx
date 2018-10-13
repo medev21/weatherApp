@@ -110,8 +110,6 @@ class SearchWeather extends Component {
 	    	backgroundRepeat: "no-repeat"
 	    }
 
-	    console.log(introStyle);
-
 		return(
 			<div className="searchContainer" style={introStyle}>
 				<div className="headerSection">
