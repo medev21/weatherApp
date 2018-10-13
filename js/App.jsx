@@ -60,17 +60,9 @@ class App extends Component {
 	    	/>
 		}
 
-
-
 	    // Finally, render it!
 	    return (
 	    	<div className="mainContainer">
-	    		{/*<SearchWeather suggestData={{value: this.state.value, suggestedCities: this.state.suggestedCities, isWeatherRendering: this.state.isWeatherRendering}} 
-	    		onSelectCity={this.handleCity} 
-	    		onChange={this.handleOnChange} 
-	    		onSuggestedCities={this.handleSuggestedCities}  
-	    		onClearSuggestions={this.handleClearSuggetions}
-	    		/>*/}
 	    		{searchWeatherComponent}
 			    {weatherComponent}
 		    </div>

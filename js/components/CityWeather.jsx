@@ -1,5 +1,6 @@
 //this is the cityweathercomponent
 import React, { Component } from "react";
+import BackgroundWeather from '../../images/weatherBackground.jpg'
 
 class CityWeather extends Component {
 
@@ -73,7 +74,7 @@ class CityWeather extends Component {
 	renderTemp = () => {
 
 		let element = 
-			<div>
+			<div className="conditionSection">
 				<h2>condition</h2>		
 
 				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -105,11 +106,20 @@ class CityWeather extends Component {
 
 	render(){
 
+		const backgroundImage = {
+	    	backgroundImage: `url(${BackgroundWeather})`,
+	    	backgroundSize: "cover",
+	    	backgroundPosition: "center",
+	    	backgroundRepeat: "no-repeat"
+	    }
+
 		return(
-			<div>
+			<div className="currentWeatherContainer" style={backgroundImage}>
 				{this.renderTemp()}
-				<button style={{ background: "green"}} onClick={this.convertCelsius}>convert celsius</button>
-				<button style={{ background: "blue"}} onClick={this.convertFahrenheit}>convert fahrenheit</button>
+				<div className="tempConversionBox">
+					<button style={{ background: "green"}} onClick={this.convertCelsius}>convert celsius</button>
+					<button style={{ background: "blue"}} onClick={this.convertFahrenheit}>convert fahrenheit</button>
+				</div>
 			</div>
 
 			
