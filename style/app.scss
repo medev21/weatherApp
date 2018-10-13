@@ -8,11 +8,13 @@
 		div.searchContainer{
 			height: 100%;
 
-			div.headerSection{}
+			div.headerSection{
+				padding: 50px 0 0 50px;
+			}
 
 			div.searchSection{
 				width: 300px;
-				margin: 0 auto 0;
+				margin: 290px auto 0;
 				text-align: center;
 			}
 		}
