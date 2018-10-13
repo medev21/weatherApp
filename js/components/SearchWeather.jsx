@@ -66,7 +66,7 @@ class SearchWeather extends Component {
 		return (
 	    	<div {...containerProps}>
 	    		{children}
-	    		<h5>I like showing up.</h5>
+	    		<h5>Select your city</h5>
 	    	</div>
 	    );
 	};
@@ -86,7 +86,7 @@ class SearchWeather extends Component {
 
 	onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
 
-		if(method == 'click'){
+		if(method == 'click' || method == "enter"){
 			let cityId = suggestion.id;
 			this.fetchCityWeather(cityId);
 		}
