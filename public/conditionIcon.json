@@ -1,0 +1,24 @@
+{
+	"conditions": [
+		{
+			"01d" : "wi-day-sunny.svg",
+			"01n" : "wi-night-clear.svg",
+			"02d" : "wi-day-cloudy.svg",
+			"02n" : "wi-night-partly-cloudy.svg",
+			"03d" : "wi-cloud.svg",
+			"03n" : "wi-night-cloudy.svg",
+			"04d" : "wi-cloud.svg",
+			"04n" : "wi-cloud.svg",
+			"09d" : "wi-rain.svg",
+			"09n" : "wi-rain.svg",
+			"10d" : "wi-day-rain.svg",
+			"10n" : "wi-night-rain.svg",
+			"11d" : "wi-thunderstorm.svg",
+			"11n" : "wi-thunderstorm.svg",
+			"13d" : "wi-snow.svg",
+			"13n" : "wi-snow.svg",
+			"50d" : "wi-sprinkle.svg",
+			"50n" : "wi-sprinkle.svg"
+		}
+	]
+}

@@ -10,7 +10,7 @@ class CityWeather extends Component {
 			fahrenheit: true,
 			cityID: this.props.city,
 			weather: this.props.weatherData,
-			condition: this.props.weatherData.list[0].weather[0].main,
+			condition: this.props.weatherData.list[0].weather[0].description,
 			current: 0,
 			min: 0,
 			max: 0
@@ -18,6 +18,7 @@ class CityWeather extends Component {
 	};
 
 	getInitialTemp = () => {
+		console.log(this.state.weather);
 		let currentWeather = this.state.weather.list[0];
 		let current = currentWeather.main.temp;
 		let min = currentWeather.main.temp_min;
@@ -38,7 +39,6 @@ class CityWeather extends Component {
 		}
 
 		this.handleTempChange(result);
-		
 	};	
 
 	getFahrenheit = () => {
