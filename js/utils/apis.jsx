@@ -20,7 +20,7 @@ export default {
 
 	getConditions: function(){
 		return new Promise((resolve, reject) => {
-			Axios.get()
+			Axios.get(conditions)
 				.then(response => { resolve(response) })
 				.catch(error => { reject(error) })
 		});

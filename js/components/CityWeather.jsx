@@ -1,5 +1,6 @@
 //this is the cityweathercomponent
 import React, { Component } from "react";
+import apis from '../utils/apis';
 import BackgroundWeather from '../../images/weatherBackground.jpg'
 
 class CityWeather extends Component {
@@ -10,15 +11,32 @@ class CityWeather extends Component {
 			fahrenheit: true,
 			cityID: this.props.city,
 			weather: this.props.weatherData,
-			condition: this.props.weatherData.list[0].weather[0].description,
+			// condition: this.props.weatherData.list[0].weather[0].description,
+			condition: '',
+			iconCondition: '',
 			current: 0,
 			min: 0,
 			max: 0
 		}
 	};
 
+	getCondition = () => {
+		let rawCondition = this.props.weatherData.list[0].weather[0].description;
+		apis.getConditions().then((result) => {
+
+			console.log(rawCondition);
+
+			console.log(result.data.conditions);
+
+		}).catch((error) => {
+			console.log("CityWeather Error", error)
+			// suggestions = [];
+		});
+	};
+
 	getInitialTemp = () => {
 		console.log(this.state.weather);
+		this.getCondition();
 		let currentWeather = this.state.weather.list[0];
 		let current = currentWeather.main.temp;
 		let min = currentWeather.main.temp_min;
