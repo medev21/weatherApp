@@ -2,7 +2,8 @@ import Axios from "axios";
 // import cities from "./public/cities.json"
 
 //local file
-const cities = "./public/cities.json";
+const cities = "./public/city.list.json";
+// const conditions = "./public/conditionIcon.json"
 const weatherKey = process.env.WEATHER_API;
 
 
@@ -16,6 +17,14 @@ export default {
 				.catch(error => { reject(error)})
 		}); 
 	},
+
+	// getConditions: function(){
+	// 	return new Promise((resolve, reject) => {
+	// 		Axios.get(conditions)
+	// 			.then(response => { resolve(response) })
+	// 			.catch(error => { reject(error) })
+	// 	});
+	// },
 
 	getWeather: function(cityID){
 		return new Promise((resolve, reject) => {
