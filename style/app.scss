@@ -104,45 +104,50 @@
 		// flex-direction: column;
 
 		div.conditionSection{
-			width: 320px;
+			width: 500px;
+			text-align: center;
 
 			div.weatherStatus{
 				overflow: auto;
 
-				div.weatherIcon{float: left;}
+				// div.weatherIcon{float: left;}
 
 				div.weatherCondition{
-					float: right;
+					// float: right;
 					font-size: 40px;
-					line-height: 180px;
+					text-align: center;
+					text-transform: capitalize;
+					margin-bottom: 25px;
+					// line-height: 180px;
 				}
 			}
 
 			div.currentTempBox{
 				overflow: auto;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: row;
 
 				div.currentTemp{
-					float: left;
 					overflow: auto;
-					width: 250px;
+					display: flex;
+					justify-content: center;
 
 					div.tempNum{
-						float: left;
 						font-size: 130px;
-						width: 200px;
 						text-align: right;
 					}
 
 					div.degreeImg{
-						float: right;
+						// float: right;
 					}
 
 				}
 
 				div.tempConversionBox{
-					float: left;
 					font-size: 60px;
-					margin-left: 30px;
+					margin-right: 30px;
 
 					div.tempButton{cursor: pointer;}
 
@@ -153,18 +158,17 @@
 			div.highLowTempBox{
 			    overflow: auto;
 			    font-size: 25px;
-			    /* width: 100%; */
 			    display: flex;
-			    justify-content: space-evenly;
+			    justify-content: center;
 			    align-items: center;
 
-				// div.lowTemp{
-				// 	float: left;
-				// }
+				div.lowTemp{
+					margin-right: 10px;
+				}
 
-				// div.highTemp{
-				// 	float: right;
-				// }
+				div.highTemp{
+					margin-left: 10px;
+				}
 			}
 
 		}
