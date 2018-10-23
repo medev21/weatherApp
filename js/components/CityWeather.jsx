@@ -31,6 +31,7 @@ class CityWeather extends Component {
 	getCelsius = () => {
 		let tempObj = this.getInitialTemp();
 		let result = [];
+		let bool = false;
 
 		for(let value in tempObj){
 			if(tempObj.hasOwnProperty(value)){
@@ -39,12 +40,13 @@ class CityWeather extends Component {
 			}
 		}
 
-		this.handleTempChange(result);
+		this.handleTempChange(result, bool);
 	};	
 
 	getFahrenheit = () => {
 		let tempObj = this.getInitialTemp();
 		let result = [];
+		let bool = true;
 
 		for(let value in tempObj){
 			if(tempObj.hasOwnProperty(value)){
@@ -53,23 +55,23 @@ class CityWeather extends Component {
 			}
 		}
 
-		this.handleTempChange(result);
+		this.handleTempChange(result, bool);
 	};
 
 	componentDidMount = () => {
 		this.getFahrenheit();
-		// this.getCondition();
 	};
 
 	convertCelsius = () => { this.getCelsius(); };
 
 	convertFahrenheit = () => { this.getFahrenheit(); };
 
-	handleTempChange = (result) => {
+	handleTempChange = (result, bool) => {
 		this.setState({
 			current: result[0],
 			min: result[1],
-			max: result[2]
+			max: result[2],
+			fahrenheit: bool
 		});
 	};
 
@@ -112,10 +114,10 @@ class CityWeather extends Component {
 
 						</div>
 						<div className="tempConversionBox">
-							<div className="fahrenheitBtn tempButton" onClick={this.convertFahrenheit}>
+							<div className={this.state.fahrenheit ? 'highlightBtn tempButton' : 'tempButton'} onClick={this.convertFahrenheit}>
 								F
 							</div>
-							<div className="celsiusBtn tempButton" onClick={this.convertCelsius}>
+							<div className={this.state.fahrenheit ? 'tempButton' : 'highlightBtn tempButton'} onClick={this.convertCelsius}>
 								C
 							</div>
 						</div>
