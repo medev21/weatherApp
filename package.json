@@ -2,13 +2,16 @@
   "name": "reactweatherapp",
   "version": "1.0.0",
   "description": "weather app using react",
+  "homepage": "https://medev21.github.io/weatherApp/",
   "main": "index.jsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode development",
     "build": "webpack -p --progress --config webpack.config.js",
     "dev-build": "webpack --progress -d --config webpack.config.js",
-    "watch": "webpack-dev-server --hot --progress --mode development"
+    "watch": "webpack-dev-server --hot --progress --mode development",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -38,6 +41,7 @@
     "css-loader": "^1.0.0",
     "dotenv-webpack": "^1.5.7",
     "file-loader": "^2.0.0",
+    "gh-pages": "^2.0.1",
     "node-sass": "^4.9.3",
     "react": "^16.5.1",
     "react-autosuggest": "^9.4.2",
