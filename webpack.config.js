@@ -40,7 +40,7 @@ const config = {
 	devServer: {
 		publicPath: '/',
 		contentBase: __dirname + '/build',
-		port: 5000,
+		port: 5050,
 		historyApiFallback: {
 			index: 'index.html'
 		}
