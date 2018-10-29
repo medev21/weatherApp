@@ -14,6 +14,9 @@ class App extends Component {
 			weatherData: [],
 			currentWeather: [],
 			cityID: 0,
+			address: '',
+			latitude: null,
+			longitude: null,
 			isWeatherRendering: false
 		}
 	};
@@ -44,6 +47,23 @@ class App extends Component {
 	    });
 	};
 
+	//Maps Javascritps/ react-places-autocomplete
+
+	handleOnChangeMaps = (address) => {
+		this.setState({
+			address: address
+		});
+	};
+
+	handleSelectedCity = (lat, long, bool, data) => {
+		this.setState({
+			isWeatherRendering: bool,
+			latitude: lat,
+			longitude: long,
+			weatherData: data
+		});
+	}
+
 	render() {
 
 		let isWeatherRendering = this.state.isWeatherRendering;
@@ -53,11 +73,16 @@ class App extends Component {
 		if(isWeatherRendering){
 			weatherComponent = <CityWeather city={this.state.cityID} weatherData={this.state.weatherData} onWeatherDataChange={this.handleWeatherDataChange}/>
 		}else if(!isWeatherRendering){
-			searchWeatherComponent = <SearchWeather suggestData={{value: this.state.value, suggestedCities: this.state.suggestedCities, isWeatherRendering: this.state.isWeatherRendering}} 
+			{/*searchWeatherComponent = <SearchWeather suggestData={{value: this.state.value, suggestedCities: this.state.suggestedCities, isWeatherRendering: this.state.isWeatherRendering}} 
 	    		onSelectCity={this.handleCity} 
 	    		onChange={this.handleOnChange} 
 	    		onSuggestedCities={this.handleSuggestedCities}  
 	    		onClearSuggestions={this.handleClearSuggetions}
+	    	/>*/}
+
+	    	searchWeatherComponent = <SearchWeatherMaps suggestData={{address: this.state.address, isWeatherRendering: this.state.isWeatherRendering}} 
+	    		onChange={this.handleOnChangeMaps} 
+	    		onSelect={this.handleSelectedCity}
 	    	/>
 		}
 

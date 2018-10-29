@@ -18,19 +18,29 @@ export default {
 		}); 
 	},
 
-	// getConditions: function(){
-	// 	return new Promise((resolve, reject) => {
-	// 		Axios.get(conditions)
-	// 			.then(response => { resolve(response) })
-	// 			.catch(error => { reject(error) })
-	// 	});
-	// },
-
 	getWeather: function(cityID){
 		return new Promise((resolve, reject) => {
 			Axios.get("/public/sampleWeather.json")
 				.then((response) => { resolve(response) })
 				.catch((error) => { reject(error) });
+		});
+	},
+
+	getWeatherLatLong: function(lat, long){
+		return new Promise((resolve, reject) => {
+			Axios.get('http://api.openweathermap.org/data/2.5/forecast',{
+				params: {
+					lat: lat,
+					lon: long,
+					APPID: weatherKey
+				}
+			})
+			.then((response) => {
+				resolve(response)
+			})
+			.catch((error) => {
+				reject(error)
+			});
 		});
 	},
 
