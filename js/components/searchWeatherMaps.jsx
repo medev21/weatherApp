@@ -11,16 +11,17 @@ class SearchWeatherMaps extends Component {
 	};
 
 	onSelect = (selected) => {
-		geocodeByAddress(selected)
-	        .then(res => getLatLng(res[0]))
-	        .then(({ lat, lng }) => {
-	        	this.props.onSelect(lat,lng);
-	        	this.fetchCityWeather(lat, lng);
-	        })
-	        .catch(error => {
-		        // this.setState({ isGeocoding: false });
-		        console.log('error', error); // eslint-disable-line no-console
-	        });
+		// geocodeByAddress(selected)
+  //       .then(res => getLatLng(res[0]))
+  //       .then(({ lat, lng }) => {
+  //       	this.props.onSelect(lat,lng);
+  //       	this.fetchCityWeather(lat, lng);
+  //       })
+  //       .catch(error => {
+	 //        console.log('error', error); // eslint-disable-line no-console
+  //       });
+  		this.props.onSelect(40.6781784,-73.9441579);
+    	this.fetchCityWeather(40.6781784,-73.9441579);
 	};
 
 	fetchCityWeather = (lat, long) => {
