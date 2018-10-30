@@ -17,12 +17,14 @@ class CityWeather extends Component {
 			iconCode: this.props.weatherData.list[0].weather[0].icon,
 			current: 0,
 			min: 0,
-			max: 0
+			max: 0,
+			imageURL: ''
 		}
 	};
 
 	getInitialTemp = () => {
 		let currentWeather = this.state.weather.list[0];
+		console.log(currentWeather);
 		let current = currentWeather.main.temp;
 		let min = currentWeather.main.temp_min;
 		let max = currentWeather.main.temp_max;
@@ -65,7 +67,9 @@ class CityWeather extends Component {
 
 		apis.getRandomImage(query).then((res) => {
 			let data = res.data;
-			console.log(data);
+			let url = data.urls.full;
+			console.log(url);
+			this.setState({imageURL: url});
 		}).catch((error) => {
 			console.log("getImageCondition", error);
 		});
@@ -93,7 +97,7 @@ class CityWeather extends Component {
 	render(){
 
 		const backgroundImage = {
-	    	backgroundImage: `url(${BackgroundWeather})`,
+	    	backgroundImage: `url(${this.state.imageURL})`,
 	    	backgroundSize: "cover",
 	    	backgroundPosition: "center",
 	    	backgroundRepeat: "no-repeat"

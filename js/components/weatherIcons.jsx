@@ -7,8 +7,6 @@ class WeatherIcon extends Component {
 
 		let icon = iconPaths.icons.find(icon => icon.code === code);
 
-		console.log(icon);
-
 		if(icon){
 			return icon.path.join(" ");
 		}else{
