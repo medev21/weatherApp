@@ -5,6 +5,7 @@ import Axios from "axios";
 const cities = "./public/city.list.json";
 // const conditions = "./public/conditionIcon.json"
 const weatherKey = process.env.WEATHER_API;
+const unsplashkey = process.env.UNSPLASH_API;
 
 
 
@@ -33,6 +34,23 @@ export default {
 					lat: lat,
 					lon: long,
 					APPID: weatherKey
+				}
+			})
+			.then((response) => {
+				resolve(response)
+			})
+			.catch((error) => {
+				reject(error)
+			});
+		});
+	},
+
+	getRandomImage: function(query){
+		return new Promise((resolve, reject) => {
+			Axios.get('https://api.unsplash.com/photos/random',{
+				parms: {
+					query: query,
+					client_id: unsplashkey
 				}
 			})
 			.then((response) => {

@@ -20,6 +20,7 @@ class SearchWeatherMaps extends Component {
   //       .catch(error => {
 	 //        console.log('error', error); // eslint-disable-line no-console
   //       });
+  		console.log(selected);
   		this.props.onSelect(40.6781784,-73.9441579);
     	this.fetchCityWeather(40.6781784,-73.9441579);
 	};

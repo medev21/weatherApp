@@ -12,8 +12,7 @@ class CityWeather extends Component {
 			cityID: this.props.city,
 			weather: this.props.weatherData,
 			condition: this.props.weatherData.list[0].weather[0].description,
-			// iconCode: this.props.weatherData.list[0].weather[0].icon,
-			iconCode: "02d",
+			iconCode: this.props.weatherData.list[0].weather[0].icon,
 			current: 0,
 			min: 0,
 			max: 0
