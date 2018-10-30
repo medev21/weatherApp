@@ -2,6 +2,8 @@
 import React, { Component } from "react";
 import WeatherIcon from "./weatherIcons";
 import BackgroundWeather from '../../images/weatherBackground.jpg';
+import apis from '../utils/apis';
+
 
 class CityWeather extends Component {
 
@@ -58,8 +60,21 @@ class CityWeather extends Component {
 		this.handleTempChange(result, bool);
 	};
 
+	getImageCondition = () => {
+		let query = "clear-sky-night";
+
+		apis.getRandomImage(query).then((res) => {
+			let data = res.data;
+			console.log(data);
+		}).catch((error) => {
+			console.log("getImageCondition", error);
+		});
+
+	};
+
 	componentDidMount = () => {
 		this.getFahrenheit();
+		this.getImageCondition();
 	};
 
 	convertCelsius = () => { this.getCelsius(); };

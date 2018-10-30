@@ -7,8 +7,6 @@ const cities = "./public/city.list.json";
 const weatherKey = process.env.WEATHER_API;
 const unsplashkey = process.env.UNSPLASH_API;
 
-
-
 export default {
 
 	getCities: function(){
@@ -48,7 +46,7 @@ export default {
 	getRandomImage: function(query){
 		return new Promise((resolve, reject) => {
 			Axios.get('https://api.unsplash.com/photos/random',{
-				parms: {
+				params: {
 					query: query,
 					client_id: unsplashkey
 				}
