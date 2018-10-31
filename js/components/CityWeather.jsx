@@ -13,8 +13,8 @@ class CityWeather extends Component {
 			fahrenheit: true,
 			cityID: this.props.city,
 			weather: this.props.weatherData,
-			condition: this.props.weatherData.list[0].weather[0].description,
-			iconCode: this.props.weatherData.list[0].weather[0].icon,
+			condition: this.props.weatherData.weather[0].description,
+			iconCode: this.props.weatherData.weather[0].icon,
 			current: 0,
 			min: 0,
 			max: 0,
@@ -23,8 +23,7 @@ class CityWeather extends Component {
 	};
 
 	getInitialTemp = () => {
-		let currentWeather = this.state.weather.list[0];
-		console.log(currentWeather);
+		let currentWeather = this.state.weather;
 		let current = currentWeather.main.temp;
 		let min = currentWeather.main.temp_min;
 		let max = currentWeather.main.temp_max;
@@ -63,15 +62,15 @@ class CityWeather extends Component {
 	};
 
 	getImageCondition = () => {
-		let hours = new Date().getHours();
+		let hours = new Date().getHours(); //get current hour
 		let condition = this.state.condition;
 		condition = condition.replace(/\s+/g, '-').toLowerCase();
-		let query = hours > 6 && hours < 17 ? conditon + '-morning' : condition + '-night';
+		let query = hours > 6 && hours < 17 ? condition + '-morning' : condition + '-night';
+		console.log(query);
 
 		apis.getRandomImage(query).then((res) => {
 			let data = res.data;
 			let url = data.urls.full;
-			console.log(url);
 			this.setState({imageURL: url});
 		}).catch((error) => {
 			console.log("getImageCondition", error);
