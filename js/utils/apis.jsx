@@ -25,9 +25,9 @@ export default {
 		});
 	},
 
-	getWeatherLatLong: function(lat, long){
+	getCurrentWeatherLatLong: function(lat, long){
 		return new Promise((resolve, reject) => {
-			Axios.get('http://api.openweathermap.org/data/2.5/forecast',{
+			Axios.get('http://api.openweathermap.org/data/2.5/weather',{
 				params: {
 					lat: lat,
 					lon: long,

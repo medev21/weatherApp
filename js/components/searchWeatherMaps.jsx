@@ -11,24 +11,24 @@ class SearchWeatherMaps extends Component {
 	};
 
 	onSelect = (selected) => {
-		// geocodeByAddress(selected)
-  //       .then(res => getLatLng(res[0]))
-  //       .then(({ lat, lng }) => {
-  //       	this.props.onSelect(lat,lng);
-  //       	this.fetchCityWeather(lat, lng);
-  //       })
-  //       .catch(error => {
-	 //        console.log('error', error); // eslint-disable-line no-console
-  //       });
-  		console.log(selected);
-  		this.props.onSelect(40.6781784,-73.9441579);
-    	this.fetchCityWeather(40.6781784,-73.9441579);
+		geocodeByAddress(selected)
+        .then(res => getLatLng(res[0]))
+        .then(({ lat, lng }) => {
+        	this.props.onSelect(lat,lng);
+        	this.fetchCityWeather(lat, lng);
+        })
+        .catch(error => {
+	        console.log('error', error); // eslint-disable-line no-console
+        });
+  		// console.log(selected);
+  		// this.props.onSelect(40.6781784,-73.9441579);
+    // 	this.fetchCityWeather(40.6781784,-73.9441579);
 	};
 
 	fetchCityWeather = (lat, long) => {
 		console.log(lat, long);
 
-		apis.getWeatherLatLong(lat, long).then((res) => {
+		apis.getCurrentWeatherLatLong(lat, long).then((res) => {
 			let data = res.data;
 			let boolean = !this.props.suggestData.isWeatherRendering;
 			this.props.onSelect(lat, long, boolean, data); //pass data to parent
