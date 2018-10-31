@@ -63,7 +63,10 @@ class CityWeather extends Component {
 	};
 
 	getImageCondition = () => {
-		let query = "clear-sky-night";
+		let hours = new Date().getHours();
+		let condition = this.state.condition;
+		condition = condition.replace(/\s+/g, '-').toLowerCase();
+		let query = hours > 6 && hours < 17 ? conditon + '-morning' : condition + '-night';
 
 		apis.getRandomImage(query).then((res) => {
 			let data = res.data;
