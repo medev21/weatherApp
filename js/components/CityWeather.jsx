@@ -13,6 +13,7 @@ class CityWeather extends Component {
 			fahrenheit: true,
 			cityID: this.props.city,
 			weather: this.props.weatherData,
+			cityName: this.props.weatherData.name,
 			condition: this.props.weatherData.weather[0].description,
 			iconCode: this.props.weatherData.weather[0].icon,
 			current: 0,
@@ -24,6 +25,7 @@ class CityWeather extends Component {
 
 	getInitialTemp = () => {
 		let currentWeather = this.state.weather;
+		console.log(currentWeather);
 		let current = currentWeather.main.temp;
 		let min = currentWeather.main.temp_min;
 		let max = currentWeather.main.temp_max;
@@ -107,6 +109,9 @@ class CityWeather extends Component {
 
 		return(
 			<div className="currentWeatherContainer" style={backgroundImage}>
+
+				<div className="cityNameSection"><h2>{this.state.cityName}</h2></div>
+
 				<div className="conditionSection">
 					<div className="weatherStatus">
 						<div className="weatherIcon">
