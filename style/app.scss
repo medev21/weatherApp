@@ -17,6 +17,32 @@
 				margin: 290px auto 0;
 				text-align: center;
 
+				input.location-search-input{
+					background-color: transparent;
+				    border: none;
+				    border-bottom: 1px solid #fff;
+				    color: #fff;
+				    width: 300px;
+				    height: 50px;
+				    padding: 0;
+				    font-size: 16px;
+				}
+
+				input.location-search-input::placeholder{
+					color: #fff;
+					font-style: italic;
+				}
+
+				input.location-search-input:focus{
+					outline: 0;
+				}
+
+				div.suggestion-item{
+					cursor: pointer;
+					margin: 10px 0;
+				}
+
+				// old component css
 				.react-autosuggest__container {
 				  position: relative;
 				}
@@ -90,10 +116,6 @@
 
 			}
 		}
-
-	
-
-		//here goes the weather component css
 	}
 
 	div.currentWeatherContainer{

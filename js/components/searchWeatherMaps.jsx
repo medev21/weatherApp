@@ -6,7 +6,6 @@ import apis from '../utils/apis';
 class SearchWeatherMaps extends Component {
 
 	onChangeMaps = (address) => {
-		console.log(address);
 		this.props.onChange(address);
 	};
 
@@ -20,14 +19,9 @@ class SearchWeatherMaps extends Component {
         .catch(error => {
 	        console.log('error', error); // eslint-disable-line no-console
         });
-  		// console.log(selected);
-  		// this.props.onSelect(40.6781784,-73.9441579);
-    // 	this.fetchCityWeather(40.6781784,-73.9441579);
 	};
 
 	fetchCityWeather = (lat, long) => {
-		console.log(lat, long);
-
 		apis.getCurrentWeatherLatLong(lat, long).then((res) => {
 			let data = res.data;
 			let boolean = !this.props.suggestData.isWeatherRendering;
@@ -77,8 +71,8 @@ class SearchWeatherMaps extends Component {
 				                  : 'suggestion-item';
 				                // inline style for demonstration purpose
 				                const style = suggestion.active
-				                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-				                  : { backgroundColor: '#ffffff', cursor: 'pointer', color: '#000' };
+				                  ? { cursor: 'pointer', margin: '10px 0', fontSize: '20px' }
+				                  : { cursor: 'pointer', margin: '10px 0' };
 				                return (
 				                  <div
 				                    {...getSuggestionItemProps(suggestion, {
