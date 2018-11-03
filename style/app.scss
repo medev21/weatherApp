@@ -219,3 +219,17 @@
 	}
 
 }
+
+@media screen and (max-width: 499px){
+
+	#weatherapp{
+		div.currentWeatherContainer div.conditionSection{
+			width: initial;
+		}
+
+		div.currentWeatherContainer div.cityNameSection{
+			padding: 0;
+		}
+	}
+
+}
