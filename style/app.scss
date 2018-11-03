@@ -204,3 +204,18 @@
 
 	}
 }
+// @media screen and (min-width: 700px) and (min-width: 500px)
+@media screen and (max-width: 700px){
+
+	#weatherapp{
+		div.mainContainer{
+			div.searchContainer{
+				div.headerSection{
+					padding-right: 50px;
+					text-align: center;
+				}
+			}
+		}  
+	}
+
+}

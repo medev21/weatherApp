@@ -1,9 +1,7 @@
 import Axios from "axios";
-// import cities from "./public/cities.json"
 
 //local file
 const cities = "./public/city.list.json";
-// const conditions = "./public/conditionIcon.json"
 const weatherKey = process.env.WEATHER_API;
 const unsplashkey = process.env.UNSPLASH_API;
 
