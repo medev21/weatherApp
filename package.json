@@ -11,7 +11,8 @@
     "dev-build": "webpack --progress -d --config webpack.config.js",
     "watch": "webpack-dev-server --hot --progress --mode development",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "start": "webpack-dev-server --open --mode development"
   },
   "repository": {
     "type": "git",
