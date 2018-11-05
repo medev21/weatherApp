@@ -1,7 +1,6 @@
 //this is the cityweathercomponent
 import React, { Component } from "react";
 import WeatherIcon from "./weatherIcons";
-import BackgroundWeather from '../../images/weatherBackground.jpg';
 import apis from '../utils/apis';
 
 
