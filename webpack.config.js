@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const Dotenv = require('dotenv-webpack');
+// const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 const config = {
 	entry: __dirname + '/js/index.jsx',
@@ -52,7 +53,8 @@ const config = {
 			// { from: './public/sampleWeather.json', to: './public/sampleWeather.json'},
 			{ from: './images/', to: './images/'}
 		]),
-		new Dotenv()
+		new Dotenv(),
+		// new CaseSensitivePathsPlugin()
 	]
 }
 

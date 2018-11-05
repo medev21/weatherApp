@@ -1,7 +1,7 @@
 //this is the cityweathercomponent
 import React, { Component } from "react";
-import WeatherIcon from "./weatherIcons";
-import apis from '../utils/apis';
+import WeatherIcon from "./weatherIcons.jsx";
+import apis from '../utils/apis.jsx';
 
 
 class CityWeather extends Component {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import Background from '../../images/introImage.jpg'
-import apis from '../utils/apis';
+import apis from '../utils/apis.jsx';
 
 class SearchWeatherMaps extends Component {
 
