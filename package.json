@@ -16,7 +16,7 @@
     "watch": "webpack-dev-server --hot --progress --mode development",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "postinstall": "webpack -p",
+    "postinstall": "webpack -p --progress --config webpack.config.js",
     "start": "node server.js"
   },
   "repository": {
