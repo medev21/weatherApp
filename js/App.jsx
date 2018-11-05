@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import CityWeather from './components/CityWeather.jsx';
-import SearchWeather from './components/SearchWeather.jsx';
-import SearchWeatherMaps from './components/SearchWeatherMaps.jsx';
+import CityWeather from './components/CityWeather';
+import SearchWeather from './components/SearchWeather';
+import SearchWeatherMaps from './components/searchWeatherMaps';
 
 
 class App extends Component {

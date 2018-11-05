@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import Autosuggest from 'react-autosuggest';
-import apis from '../utils/apis.jsx';
+import apis from '../utils/apis';
 import Background from '../../images/introImage.jpg'
 
 let suggestions;
