@@ -54,6 +54,12 @@ const config = {
 			{ from: './images/', to: './images/'}
 		]),
 		new Dotenv(),
+		new webpack.DefinePlugin({
+			'process.env': {
+				WEATHER_API: process.env.WEATHER_API,
+				UNSPLASH_API: process.env.UNSPLASH_API
+			}
+		});
 		// new CaseSensitivePathsPlugin()
 	]
 }
