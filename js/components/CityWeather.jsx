@@ -2,7 +2,11 @@
 import React, { Component } from "react";
 import WeatherIcon from "./weatherIcons.jsx";
 import apis from '../utils/apis.jsx';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearchLocation } from '@fortawesome/free-solid-svg-icons';
 
+library.add(faSearchLocation)
 
 class CityWeather extends Component {
 
@@ -161,7 +165,10 @@ class CityWeather extends Component {
 			<div className="currentWeatherContainer" style={backgroundImage}>
 
 				<div className="searchSection">
-					Search another city
+					<FontAwesomeIcon 
+						icon={['fa', 'search-location']} 
+						size="4x"
+					/>
 				</div>
 
 				<div className="cityNameSection"><h2>{this.state.cityName}</h2></div>
