@@ -64,6 +64,12 @@ class App extends Component {
 		});
 	}
 
+	handleSearchMode = () => {
+		this.setState({
+			isWeatherRendering: !this.state.isWeatherRendering
+		});
+	}
+
 	render() {
 
 		let isWeatherRendering = this.state.isWeatherRendering;
@@ -71,7 +77,7 @@ class App extends Component {
 		let searchWeatherComponent;
 
 		if(isWeatherRendering){
-			weatherComponent = <CityWeather city={this.state.cityID} weatherData={this.state.weatherData} onWeatherDataChange={this.handleWeatherDataChange}/>
+			weatherComponent = <CityWeather city={this.state.cityID} weatherData={this.state.weatherData} onWeatherDataChange={this.handleWeatherDataChange} searchMode={this.handleSearchMode}/>
 		}else if(!isWeatherRendering){
 			{/*searchWeatherComponent = <SearchWeather suggestData={{value: this.state.value, suggestedCities: this.state.suggestedCities, isWeatherRendering: this.state.isWeatherRendering}} 
 	    		onSelectCity={this.handleCity} 

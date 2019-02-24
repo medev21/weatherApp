@@ -134,6 +134,10 @@ class CityWeather extends Component {
 
 	};
 
+	handleSearchMode = () => {
+		this.props.searchMode();
+	};
+
 	componentDidMount = () => {
 		this.getFahrenheit();
 		this.getImageCondition();
@@ -167,7 +171,8 @@ class CityWeather extends Component {
 				<div className="searchSection">
 					<FontAwesomeIcon 
 						icon={['fa', 'search-location']} 
-						size="4x"
+						size="4x" 
+						onClick={this.handleSearchMode}
 					/>
 				</div>
 
