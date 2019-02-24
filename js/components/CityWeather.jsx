@@ -160,6 +160,10 @@ class CityWeather extends Component {
 		return(
 			<div className="currentWeatherContainer" style={backgroundImage}>
 
+				<div className="searchSection">
+					Search another city
+				</div>
+
 				<div className="cityNameSection"><h2>{this.state.cityName}</h2></div>
 
 				<div className="conditionSection">
