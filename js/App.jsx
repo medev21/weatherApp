@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import CityWeather from './components/CityWeather';
-import SearchWeather from './components/SearchWeather';
 import SearchWeatherMaps from './components/searchWeatherMaps';
-
 
 class App extends Component {
 
@@ -17,7 +15,7 @@ class App extends Component {
 			address: '',
 			latitude: null,
 			longitude: null,
-			isWeatherRendering: true
+			isWeatherRendering: false
 		}
 	};
 
@@ -77,15 +75,8 @@ class App extends Component {
 		let searchWeatherComponent;
 
 		if(isWeatherRendering){
-			weatherComponent = <CityWeather city={this.state.cityID} weatherData={this.state.weatherData} onWeatherDataChange={this.handleWeatherDataChange} searchMode={this.handleSearchMode}/>
+			weatherComponent = <CityWeather city={this.state.cityID} weatherData={this.state.weatherData} searchMode={this.handleSearchMode}/>
 		}else if(!isWeatherRendering){
-			{/*searchWeatherComponent = <SearchWeather suggestData={{value: this.state.value, suggestedCities: this.state.suggestedCities, isWeatherRendering: this.state.isWeatherRendering}} 
-	    		onSelectCity={this.handleCity} 
-	    		onChange={this.handleOnChange} 
-	    		onSuggestedCities={this.handleSuggestedCities}  
-	    		onClearSuggestions={this.handleClearSuggetions}
-	    	/>*/}
-
 	    	searchWeatherComponent = <SearchWeatherMaps suggestData={{address: this.state.address, isWeatherRendering: this.state.isWeatherRendering}} 
 	    		onChange={this.handleOnChangeMaps} 
 	    		onSelect={this.handleSelectedCity}
