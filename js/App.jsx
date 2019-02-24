@@ -64,6 +64,7 @@ class App extends Component {
 
 	handleSearchMode = () => {
 		this.setState({
+			address: '',
 			isWeatherRendering: !this.state.isWeatherRendering
 		});
 	}
