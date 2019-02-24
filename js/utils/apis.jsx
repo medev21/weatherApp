@@ -15,7 +15,7 @@ export default {
 		}); 
 	},
 
-	getWeather: function(cityID){
+	getWeather: function(){
 		return new Promise((resolve, reject) => {
 			Axios.get("/public/sampleWeather.json")
 				.then((response) => { resolve(response) })

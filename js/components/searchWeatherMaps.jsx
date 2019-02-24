@@ -17,8 +17,8 @@ class SearchWeatherMaps extends Component {
         	this.fetchCityWeather(lat, lng);
         })
         .catch(error => {
-	        console.log('error', error); // eslint-disable-line no-console
-        });
+	        console.log('error', error);
+		    });		
 	};
 
 	fetchCityWeather = (lat, long) => {

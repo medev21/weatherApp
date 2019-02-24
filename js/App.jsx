@@ -17,7 +17,7 @@ class App extends Component {
 			address: '',
 			latitude: null,
 			longitude: null,
-			isWeatherRendering: false
+			isWeatherRendering: true
 		}
 	};
 
