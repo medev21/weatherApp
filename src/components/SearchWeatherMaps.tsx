@@ -10,9 +10,6 @@ interface SearchWeatherMapsProps {
 	handleSelect: (coords: GeoCoordsProps) => void;
 }
 
-//clear-sky-morning
-//https://images.unsplash.com/photo-1541193825568-3cdce004a5ef?crop=entropy&cs=srgb&fm=jpg&ixid=M3w0MDY4NHwwfDF8cmFuZG9tfHx8fHx8fHx8MTc0ODg3Nzg0OXw&ixlib=rb-4.1.0&q=85
-
 function SearchWeatherMaps({ handleSelect }: SearchWeatherMapsProps) {
 	const placesRef = useRef(null)
 
