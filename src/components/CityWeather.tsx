@@ -4,12 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearchLocation } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from "react";
 // COMPONENTS
+import DegreeIcon from 'src/components/DegreeIcon';
 import WeatherIcon from "src/components/WeatherIcon";
 // TYPES
 import { WeatherResponse } from "src/types/openweatherapi";
 // UTILS
 import { apis } from 'src/utils/apis';
-import DegreeIcon from 'src/components/DegreeIcon';
 
 library.add(faSearchLocation)
 
