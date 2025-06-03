@@ -1,27 +1,36 @@
 // COMPONENTS
 import CityWeather from 'src/components/CityWeather';
+import Loader from 'src/components/Loader';
 import SearchWeatherMaps from 'src/components/SearchWeatherMaps'
 // DEPENDENCIES
 import { useState } from "react";
+import { useMutation } from '@tanstack/react-query';
 // TYPES
-import { WeatherResponse } from "src/types/openweatherapi";
+import { GeoCoordsProps } from 'src/types/geosuggest';
+// UTILS
+import { apis } from 'src/utils/apis';
 
 function App() {
+	const [weatherIsDisplaying, setWeatherIsDiplaying] = useState(false);
+	const {data: weatherData, isPending, mutate} = useMutation({
+		mutationFn: async(coords: GeoCoordsProps) => {
+			return apis.getCurrentWeatherByLatLong(coords)
+		}
+	})
 
-	const [weatherData, setWeatherData] = useState<WeatherResponse | null>(null);
-	const [isWeatherRendering, setIsWeatherRendering] = useState(false);
-
-	function handleSelectedCity (bool:boolean, data: WeatherResponse | null)  {
-		setIsWeatherRendering(bool)
-		setWeatherData(data)
+	function handleLocationSelection (location: GeoCoordsProps){
+		setWeatherIsDiplaying(true)
+		mutate(location)
 	}
 
 	function handleSearchMode () {
-		setIsWeatherRendering((prev) => !prev)
+		setWeatherIsDiplaying((prev) => !prev)
 	}
 
 	const renderWeatherComponent = () => {
-		if(isWeatherRendering && weatherData) {
+		const canViewWeatherDisplay = !isPending && weatherData && weatherIsDisplaying
+		if(isPending) return <Loader />
+		if(canViewWeatherDisplay) {
 			return(
 				<CityWeather weatherData={weatherData} searchMode={handleSearchMode}/>
 			)
@@ -29,7 +38,7 @@ function App() {
 
 		return (
 			<SearchWeatherMaps
-				onSelect={handleSelectedCity}
+				handleSelect={handleLocationSelection}
 			/>
 		)
 	}
