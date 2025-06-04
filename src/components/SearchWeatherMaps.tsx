@@ -33,13 +33,11 @@ function SearchWeatherMaps({ handleSelect }: SearchWeatherMapsProps) {
 				<h2>Weather Scan</h2>
 			</div>
 			<div className="searchSection">
-				<>				
 					<Geosuggest
 						ref={placesRef}
 						onSuggestSelect={onSelect}
+						placeholder="Type a location"
 					/>
-				</>
-
 			</div>
 		</div>
 		

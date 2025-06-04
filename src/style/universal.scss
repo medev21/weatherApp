@@ -27,3 +27,43 @@ a:hover{
 ul {margin: 0; list-style: none; padding: 0;}
 
 li{ margin: 0;}
+
+input {
+	width: 100%;
+	height: 48px;
+	border: 1px solid #e5e7eb;
+	padding: 16px 24px;
+	font-size: 18px;
+	color: #00141D;
+
+	&:focus {
+		border-color: #1434E2;
+	}
+
+	&:hover {
+		border-color: #00141D;
+	}
+
+	&:focus-visible {
+		outline: none;
+	}
+}
+
+ul {
+	background-color: white;
+	color: black;
+	width: 100%;
+
+	li {
+		padding: 16px 24px
+	}
+
+	li:hover{
+		background-color: #EDEEF0;
+	}
+
+	li:active {
+		background-color: #1434E2;
+		color: white;
+	}
+}

@@ -7,7 +7,7 @@ interface SpinnerProps {
 function Loader ({
     size = 40,
     strokeWidth = 4,
-    color = '#1976d2',
+    color = '#1434E2',
 }: SpinnerProps)  {
     const center = size / 2;
     const radius = center - strokeWidth / 2;
